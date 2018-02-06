@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		47A32D392029AD37008954EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A32D382029AD37008954EF /* AppDelegate.swift */; };
-		47A32D3B2029AD37008954EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A32D3A2029AD37008954EF /* ViewController.swift */; };
+		47A32D3B2029AD37008954EF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A32D3A2029AD37008954EF /* HomeViewController.swift */; };
 		47A32D3E2029AD38008954EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47A32D3C2029AD38008954EF /* Main.storyboard */; };
 		47A32D412029AD38008954EF /* DemandDriver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47A32D3F2029AD38008954EF /* DemandDriver.xcdatamodeld */; };
 		47A32D432029AD38008954EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47A32D422029AD38008954EF /* Assets.xcassets */; };
@@ -37,7 +37,7 @@
 /* Begin PBXFileReference section */
 		47A32D352029AD37008954EF /* DemandDriver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemandDriver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47A32D382029AD37008954EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		47A32D3A2029AD37008954EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		47A32D3A2029AD37008954EF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		47A32D3D2029AD38008954EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		47A32D402029AD38008954EF /* DemandDriver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DemandDriver.xcdatamodel; sourceTree = "<group>"; };
 		47A32D422029AD38008954EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				47A32D382029AD37008954EF /* AppDelegate.swift */,
-				47A32D3A2029AD37008954EF /* ViewController.swift */,
+				47A32D3A2029AD37008954EF /* HomeViewController.swift */,
 				47A32D3C2029AD38008954EF /* Main.storyboard */,
 				47A32D422029AD38008954EF /* Assets.xcassets */,
 				47A32D442029AD38008954EF /* LaunchScreen.storyboard */,
@@ -262,7 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47A32D3B2029AD37008954EF /* ViewController.swift in Sources */,
+				47A32D3B2029AD37008954EF /* HomeViewController.swift in Sources */,
 				47A32D392029AD37008954EF /* AppDelegate.swift in Sources */,
 				47A32D412029AD38008954EF /* DemandDriver.xcdatamodeld in Sources */,
 			);
@@ -433,6 +433,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XSJRRDKMW9;
 				INFOPLIST_FILE = DemandDriver/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.music.DemandDriver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -448,6 +449,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XSJRRDKMW9;
 				INFOPLIST_FILE = DemandDriver/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.music.DemandDriver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
