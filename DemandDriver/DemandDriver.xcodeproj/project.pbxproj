@@ -1,0 +1,580 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		47A32D392029AD37008954EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A32D382029AD37008954EF /* AppDelegate.swift */; };
+		47A32D3B2029AD37008954EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A32D3A2029AD37008954EF /* ViewController.swift */; };
+		47A32D3E2029AD38008954EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47A32D3C2029AD38008954EF /* Main.storyboard */; };
+		47A32D412029AD38008954EF /* DemandDriver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47A32D3F2029AD38008954EF /* DemandDriver.xcdatamodeld */; };
+		47A32D432029AD38008954EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47A32D422029AD38008954EF /* Assets.xcassets */; };
+		47A32D462029AD38008954EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47A32D442029AD38008954EF /* LaunchScreen.storyboard */; };
+		47A32D512029AD38008954EF /* DemandDriverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A32D502029AD38008954EF /* DemandDriverTests.swift */; };
+		47A32D5C2029AD38008954EF /* DemandDriverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A32D5B2029AD38008954EF /* DemandDriverUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		47A32D4D2029AD38008954EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 47A32D2D2029AD37008954EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 47A32D342029AD37008954EF;
+			remoteInfo = DemandDriver;
+		};
+		47A32D582029AD38008954EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 47A32D2D2029AD37008954EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 47A32D342029AD37008954EF;
+			remoteInfo = DemandDriver;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		47A32D352029AD37008954EF /* DemandDriver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemandDriver.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		47A32D382029AD37008954EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		47A32D3A2029AD37008954EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		47A32D3D2029AD38008954EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		47A32D402029AD38008954EF /* DemandDriver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DemandDriver.xcdatamodel; sourceTree = "<group>"; };
+		47A32D422029AD38008954EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		47A32D452029AD38008954EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		47A32D472029AD38008954EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47A32D4C2029AD38008954EF /* DemandDriverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemandDriverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		47A32D502029AD38008954EF /* DemandDriverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemandDriverTests.swift; sourceTree = "<group>"; };
+		47A32D522029AD38008954EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47A32D572029AD38008954EF /* DemandDriverUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemandDriverUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		47A32D5B2029AD38008954EF /* DemandDriverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemandDriverUITests.swift; sourceTree = "<group>"; };
+		47A32D5D2029AD38008954EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		47A32D322029AD37008954EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47A32D492029AD38008954EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47A32D542029AD38008954EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		47A32D2C2029AD37008954EF = {
+			isa = PBXGroup;
+			children = (
+				47A32D372029AD37008954EF /* DemandDriver */,
+				47A32D4F2029AD38008954EF /* DemandDriverTests */,
+				47A32D5A2029AD38008954EF /* DemandDriverUITests */,
+				47A32D362029AD37008954EF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		47A32D362029AD37008954EF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				47A32D352029AD37008954EF /* DemandDriver.app */,
+				47A32D4C2029AD38008954EF /* DemandDriverTests.xctest */,
+				47A32D572029AD38008954EF /* DemandDriverUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		47A32D372029AD37008954EF /* DemandDriver */ = {
+			isa = PBXGroup;
+			children = (
+				47A32D382029AD37008954EF /* AppDelegate.swift */,
+				47A32D3A2029AD37008954EF /* ViewController.swift */,
+				47A32D3C2029AD38008954EF /* Main.storyboard */,
+				47A32D422029AD38008954EF /* Assets.xcassets */,
+				47A32D442029AD38008954EF /* LaunchScreen.storyboard */,
+				47A32D472029AD38008954EF /* Info.plist */,
+				47A32D3F2029AD38008954EF /* DemandDriver.xcdatamodeld */,
+			);
+			path = DemandDriver;
+			sourceTree = "<group>";
+		};
+		47A32D4F2029AD38008954EF /* DemandDriverTests */ = {
+			isa = PBXGroup;
+			children = (
+				47A32D502029AD38008954EF /* DemandDriverTests.swift */,
+				47A32D522029AD38008954EF /* Info.plist */,
+			);
+			path = DemandDriverTests;
+			sourceTree = "<group>";
+		};
+		47A32D5A2029AD38008954EF /* DemandDriverUITests */ = {
+			isa = PBXGroup;
+			children = (
+				47A32D5B2029AD38008954EF /* DemandDriverUITests.swift */,
+				47A32D5D2029AD38008954EF /* Info.plist */,
+			);
+			path = DemandDriverUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		47A32D342029AD37008954EF /* DemandDriver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 47A32D602029AD38008954EF /* Build configuration list for PBXNativeTarget "DemandDriver" */;
+			buildPhases = (
+				47A32D312029AD37008954EF /* Sources */,
+				47A32D322029AD37008954EF /* Frameworks */,
+				47A32D332029AD37008954EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DemandDriver;
+			productName = DemandDriver;
+			productReference = 47A32D352029AD37008954EF /* DemandDriver.app */;
+			productType = "com.apple.product-type.application";
+		};
+		47A32D4B2029AD38008954EF /* DemandDriverTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 47A32D632029AD38008954EF /* Build configuration list for PBXNativeTarget "DemandDriverTests" */;
+			buildPhases = (
+				47A32D482029AD38008954EF /* Sources */,
+				47A32D492029AD38008954EF /* Frameworks */,
+				47A32D4A2029AD38008954EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				47A32D4E2029AD38008954EF /* PBXTargetDependency */,
+			);
+			name = DemandDriverTests;
+			productName = DemandDriverTests;
+			productReference = 47A32D4C2029AD38008954EF /* DemandDriverTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		47A32D562029AD38008954EF /* DemandDriverUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 47A32D662029AD38008954EF /* Build configuration list for PBXNativeTarget "DemandDriverUITests" */;
+			buildPhases = (
+				47A32D532029AD38008954EF /* Sources */,
+				47A32D542029AD38008954EF /* Frameworks */,
+				47A32D552029AD38008954EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				47A32D592029AD38008954EF /* PBXTargetDependency */,
+			);
+			name = DemandDriverUITests;
+			productName = DemandDriverUITests;
+			productReference = 47A32D572029AD38008954EF /* DemandDriverUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		47A32D2D2029AD37008954EF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Siva;
+				TargetAttributes = {
+					47A32D342029AD37008954EF = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					47A32D4B2029AD38008954EF = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 47A32D342029AD37008954EF;
+					};
+					47A32D562029AD38008954EF = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 47A32D342029AD37008954EF;
+					};
+				};
+			};
+			buildConfigurationList = 47A32D302029AD37008954EF /* Build configuration list for PBXProject "DemandDriver" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 47A32D2C2029AD37008954EF;
+			productRefGroup = 47A32D362029AD37008954EF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				47A32D342029AD37008954EF /* DemandDriver */,
+				47A32D4B2029AD38008954EF /* DemandDriverTests */,
+				47A32D562029AD38008954EF /* DemandDriverUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		47A32D332029AD37008954EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47A32D462029AD38008954EF /* LaunchScreen.storyboard in Resources */,
+				47A32D432029AD38008954EF /* Assets.xcassets in Resources */,
+				47A32D3E2029AD38008954EF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47A32D4A2029AD38008954EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47A32D552029AD38008954EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		47A32D312029AD37008954EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47A32D3B2029AD37008954EF /* ViewController.swift in Sources */,
+				47A32D392029AD37008954EF /* AppDelegate.swift in Sources */,
+				47A32D412029AD38008954EF /* DemandDriver.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47A32D482029AD38008954EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47A32D512029AD38008954EF /* DemandDriverTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47A32D532029AD38008954EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47A32D5C2029AD38008954EF /* DemandDriverUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		47A32D4E2029AD38008954EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 47A32D342029AD37008954EF /* DemandDriver */;
+			targetProxy = 47A32D4D2029AD38008954EF /* PBXContainerItemProxy */;
+		};
+		47A32D592029AD38008954EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 47A32D342029AD37008954EF /* DemandDriver */;
+			targetProxy = 47A32D582029AD38008954EF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		47A32D3C2029AD38008954EF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47A32D3D2029AD38008954EF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		47A32D442029AD38008954EF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47A32D452029AD38008954EF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		47A32D5E2029AD38008954EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		47A32D5F2029AD38008954EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		47A32D612029AD38008954EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XSJRRDKMW9;
+				INFOPLIST_FILE = DemandDriver/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.music.DemandDriver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		47A32D622029AD38008954EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XSJRRDKMW9;
+				INFOPLIST_FILE = DemandDriver/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.music.DemandDriver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		47A32D642029AD38008954EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XSJRRDKMW9;
+				INFOPLIST_FILE = DemandDriverTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.music.DemandDriverTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DemandDriver.app/DemandDriver";
+			};
+			name = Debug;
+		};
+		47A32D652029AD38008954EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XSJRRDKMW9;
+				INFOPLIST_FILE = DemandDriverTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.music.DemandDriverTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DemandDriver.app/DemandDriver";
+			};
+			name = Release;
+		};
+		47A32D672029AD38008954EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XSJRRDKMW9;
+				INFOPLIST_FILE = DemandDriverUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.music.DemandDriverUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DemandDriver;
+			};
+			name = Debug;
+		};
+		47A32D682029AD38008954EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XSJRRDKMW9;
+				INFOPLIST_FILE = DemandDriverUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.music.DemandDriverUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DemandDriver;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		47A32D302029AD37008954EF /* Build configuration list for PBXProject "DemandDriver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47A32D5E2029AD38008954EF /* Debug */,
+				47A32D5F2029AD38008954EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		47A32D602029AD38008954EF /* Build configuration list for PBXNativeTarget "DemandDriver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47A32D612029AD38008954EF /* Debug */,
+				47A32D622029AD38008954EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		47A32D632029AD38008954EF /* Build configuration list for PBXNativeTarget "DemandDriverTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47A32D642029AD38008954EF /* Debug */,
+				47A32D652029AD38008954EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		47A32D662029AD38008954EF /* Build configuration list for PBXNativeTarget "DemandDriverUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47A32D672029AD38008954EF /* Debug */,
+				47A32D682029AD38008954EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		47A32D3F2029AD38008954EF /* DemandDriver.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				47A32D402029AD38008954EF /* DemandDriver.xcdatamodel */,
+			);
+			currentVersion = 47A32D402029AD38008954EF /* DemandDriver.xcdatamodel */;
+			path = DemandDriver.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 47A32D2D2029AD37008954EF /* Project object */;
+}
