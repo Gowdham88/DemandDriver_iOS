@@ -14,79 +14,22 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var registerButtonAsDriver: UIButton!
     @IBOutlet weak var registerButton: UIButton!
-    @IBOutlet weak var loginMainView: ViewExtender!
+//    @IBOutlet weak var loginMainView: ViewExtender!
+    
+    @IBOutlet weak var arrowButton: UIButton!
+    @IBOutlet weak var loginMainView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-//        let rectShape = CAShapeLayer()
-//        rectShape.bounds = self.loginMainView.frame
-//        rectShape.position = self.loginMainView.center
-//        rectShape.path = UIBezierPath(roundedRect: self.loginMainView.bounds, byRoundingCorners: [.bottomRight ,.topRight ], cornerRadii: CGSize(width: 130, height: 130)).cgPath
-//
-////        self.loginMainView.layer.backgroundColor = UIColor(red: 74/255.0, green: 144/255.0, blue: 226/255.0, alpha: 0.5).cgColor
-//        self.loginMainView.layer.backgroundColor = UIColor.white.cgColor
-//        self.loginMainView.layer.mask = rectShape
-//
-//        let shadowLayer: CALayer = loginMainView.layer
-////        loginMainView.clipsToBounds = false
-////        loginMainView.shadowColor = UIColor.red
-////        loginMainView.shadowOffset = CGSize(width: 1, height: 1)
-//        shadowLayer.shadowOpacity = 5
-//        shadowLayer.shadowRadius = 15
-//        shadowLayer.shouldRasterize = false
-//        shadowLayer.shadowColor = UIColor.red.cgColor
-//        shadowLayer.shadowOffset = CGSize(width: 0, height: 1)
-//
-////        rectShape.addSublayer(shadowLayer)
-        
-        
+     self.navigationController?.navigationBar.isHidden = true
 
-        
-        let rectShape2 = CAShapeLayer()
-        rectShape2.bounds = self.registerButton.frame
-        rectShape2.position = self.registerButton.center
-        rectShape2.path = UIBezierPath(roundedRect: self.registerButton.bounds, byRoundingCorners: [.bottomRight ,.topRight ], cornerRadii: CGSize(width: 25, height: 25)).cgPath
-        
-        self.registerButton.layer.backgroundColor = UIColor(red: 74/255.0, green: 144/255.0, blue: 226/255.0, alpha: 0.5).cgColor
-        self.registerButton.layer.mask = rectShape2
-        
-        let rectShape3 = CAShapeLayer()
-        rectShape3.bounds = self.registerButtonAsDriver.frame
-        rectShape3.position = self.registerButtonAsDriver.center
-        rectShape3.path = UIBezierPath(roundedRect: self.registerButtonAsDriver.bounds, byRoundingCorners: [.bottomRight ,.topRight ], cornerRadii: CGSize(width: 25, height: 25)).cgPath
-        
-        self.registerButtonAsDriver.layer.backgroundColor = UIColor(red: 74/255.0, green: 144/255.0, blue: 226/255.0, alpha: 0.5).cgColor
-        self.registerButtonAsDriver.layer.mask = rectShape3
-//       registerButton.layer.cornerRadius = registerButton.frame.size.height/3
-//        registerButton.clipsToBounds = true
-        
-       
-//        rectShape.backgroundColor = UIColor.darkGray.cgColor
-//        rectShape.shadowColor = UIColor.gray.cgColor
-//        rectShape.shadowRadius = 15
-//        rectShape.shadowOpacity = 100
-//        rectShape.borderColor = UIColor.blue.cgColor
-//        rectShape.borderWidth = 5
-//        
-//        let contactShadowSize: CGFloat = 20
-//        let shadowPath = CGPath(ellipseIn: CGRect(x: -contactShadowSize,
-//                                                  y: -contactShadowSize * 0.5,
-//                                                  width: rectShape.bounds.width + contactShadowSize * 2,
-//                                                  height: contactShadowSize),
-//                                transform: nil)
-//
-//        rectShape.shadowPath = shadowPath
-//        
-//        rectShape.shadowPath = UIBezierPath(rect: rectShape.bounds).cgPath
-        
-        
-
-// new
+// for main login view
         
         loginMainView.clipsToBounds = true
-        loginMainView.layer.cornerRadius = 58
+        loginMainView.layer.cornerRadius = 80
         if #available(iOS 11.0, *) {
             loginMainView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner ]
         } else {
@@ -97,13 +40,63 @@ class LoginViewController: UIViewController {
         
         
         
-        loginMainView.layer.shadowColor = UIColor(red: 74/255.0, green: 144/255.0, blue: 226/255.0, alpha: 0.5).cgColor
-        loginMainView.layer.shadowOffset = CGSize(width: 1, height: 1)  //Here you control x and y
+        loginMainView.layer.shadowColor = UIColor(red: 12/255.0, green: 189/255.0, blue: 239/255.0, alpha: 0.5).cgColor
+        loginMainView.layer.shadowOffset = CGSize(width: 1, height: 1)
         loginMainView.layer.shadowOpacity = 0.5
         loginMainView.layer.shadowRadius = 15 //Here your control your blur
         loginMainView.layer.masksToBounds =  false
         loginMainView.layer.shadowPath = shadowpath.cgPath
+
         
+        // for register button
+        
+        registerButton.clipsToBounds = true
+        registerButton.layer.cornerRadius = 32
+        if #available(iOS 11.0, *) {
+            registerButton.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner ]
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        let registerButtonshadow = UIBezierPath(roundedRect: self.registerButton.bounds, byRoundingCorners: [.topRight, .bottomRight], cornerRadii: CGSize(width: 58.0, height: 0.0))
+        
+        
+        
+        registerButton.layer.shadowColor = UIColor(red: 12/255.0, green: 189/255.0, blue: 239/255.0, alpha: 0.5).cgColor
+        registerButton.layer.shadowOffset = CGSize(width: 1, height: 1)
+        registerButton.layer.shadowOpacity = 0.5
+        registerButton.layer.shadowRadius = 5 //Here your control your blur
+        registerButton.layer.masksToBounds =  false
+        registerButton.layer.shadowPath = registerButtonshadow.cgPath
+        
+        // for register as driver button
+        
+        registerButtonAsDriver.clipsToBounds = true
+        registerButtonAsDriver.layer.cornerRadius = 32
+        if #available(iOS 11.0, *) {
+            registerButtonAsDriver.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner ]
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        let registerButtonasDrivershadow = UIBezierPath(roundedRect: self.registerButtonAsDriver.bounds, byRoundingCorners: [.topRight, .bottomRight], cornerRadii: CGSize(width: 58.0, height: 0.0))
+        
+        
+        
+        registerButtonAsDriver.layer.shadowColor = UIColor(red: 12/255.0, green: 189/255.0, blue: 239/255.0, alpha: 0.5).cgColor
+        registerButtonAsDriver.layer.shadowOffset = CGSize(width: 1, height: 1)
+        registerButtonAsDriver.layer.shadowOpacity = 0.5
+        registerButtonAsDriver.layer.shadowRadius = 5
+        registerButtonAsDriver.layer.masksToBounds =  false
+        registerButtonAsDriver.layer.shadowPath = registerButtonasDrivershadow.cgPath
+        
+        
+        arrowButton.layer.shadowColor = UIColor.white.cgColor
+//         arrowButton.layer.shadowColor = UIColor.red.cgColor
+        arrowButton.layer.shadowOffset = CGSize(width: 1, height: 1)
+        arrowButton.layer.shadowOpacity = 5
+        arrowButton.layer.shadowRadius = 10
+        arrowButton.layer.masksToBounds =  false
         
         
         
