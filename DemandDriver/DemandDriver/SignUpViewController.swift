@@ -21,7 +21,38 @@ class SignUpViewController: UIViewController {
         tickRoundedImage.layer.cornerRadius = tickRoundedImage.frame.size.height/2
         tickRoundedImage.clipsToBounds      = true
         
-      // for main login view
+     addShadowForMainLoginView()
+        
+      addShadowForLoginButton()
+
+    }
+    
+    func addShadowForLoginButton() {
+        
+        //for login button
+        loginButton.layer.cornerRadius = loginButton.frame.size.height/2
+        loginButton.clipsToBounds = true
+        
+        if #available(iOS 11.0, *) {
+            loginButton.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner ]
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        let shadowpath2 = UIBezierPath(roundedRect: self.loginButton.bounds, byRoundingCorners: [.topRight, .bottomRight], cornerRadii: CGSize(width: 58.0, height: 0.0))
+        
+        
+        
+        loginButton.layer.shadowColor = UIColor(red: 12/255.0, green: 189/255.0, blue: 239/255.0, alpha: 0.5).cgColor
+        loginButton.layer.shadowOffset = CGSize(width: 1, height: 1)
+        loginButton.layer.shadowOpacity = 0.5
+        loginButton.layer.shadowRadius = 10 //Here your control your blur
+        loginButton.layer.masksToBounds =  false
+        loginButton.layer.shadowPath = shadowpath2.cgPath
+    }
+    
+    func addShadowForMainLoginView() {
+        // for main login view
         
         signupMainView.clipsToBounds = true
         signupMainView.layer.cornerRadius = signupMainView.frame.size.height/2
@@ -41,29 +72,6 @@ class SignUpViewController: UIViewController {
         signupMainView.layer.shadowRadius = 10 //Here your control your blur
         signupMainView.layer.masksToBounds =  false
         signupMainView.layer.shadowPath = shadowpath.cgPath
-
-        
-        
-        //for login button
-        loginButton.layer.cornerRadius = loginButton.frame.size.height/2
-        loginButton.clipsToBounds = true
-       
-        if #available(iOS 11.0, *) {
-            loginButton.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner ]
-        } else {
-            // Fallback on earlier versions
-        }
-        
-        let shadowpath2 = UIBezierPath(roundedRect: self.loginButton.bounds, byRoundingCorners: [.topRight, .bottomRight], cornerRadii: CGSize(width: 58.0, height: 0.0))
-        
-        
-        
-        loginButton.layer.shadowColor = UIColor(red: 12/255.0, green: 189/255.0, blue: 239/255.0, alpha: 0.5).cgColor
-        loginButton.layer.shadowOffset = CGSize(width: 1, height: 1)
-        loginButton.layer.shadowOpacity = 0.5
-        loginButton.layer.shadowRadius = 10 //Here your control your blur
-        loginButton.layer.masksToBounds =  false
-        loginButton.layer.shadowPath = shadowpath2.cgPath
 
     }
 
