@@ -20,6 +20,8 @@
 		47A32D5C2029AD38008954EF /* DemandDriverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A32D5B2029AD38008954EF /* DemandDriverUITests.swift */; };
 		47B31767202D733F00293F54 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B31766202D733F00293F54 /* SignUpViewController.swift */; };
 		47E8C678202C146B001AC7E1 /* ViewExtender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E8C677202C146B001AC7E1 /* ViewExtender.swift */; };
+		6FF1D5AA202D661A00F38E61 /* Splash Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FF1D5A9202D661A00F38E61 /* Splash Screen.storyboard */; };
+		6FF1D5AE202D66EC00F38E61 /* SplashScreenControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1D5AD202D66EC00F38E61 /* SplashScreenControllerViewController.swift */; };
 		7F87F3FC767EBC7AF9797C43 /* Pods_DemandDriver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C449E3DD581E3AD498F476C2 /* Pods_DemandDriver.framework */; };
 		ACC0613B3F106CABF57BAD54 /* Pods_DemandDriverUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF078F9154A02B1C1E3E3007 /* Pods_DemandDriverUITests.framework */; };
 		AF7C6742593F40F173417F21 /* Pods_DemandDriverTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6ACB1FFFA9CE0ED03CA5DE7 /* Pods_DemandDriverTests.framework */; };
@@ -63,6 +65,8 @@
 		47A32D5D2029AD38008954EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47B31766202D733F00293F54 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		47E8C677202C146B001AC7E1 /* ViewExtender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtender.swift; sourceTree = "<group>"; };
+		6FF1D5A9202D661A00F38E61 /* Splash Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Splash Screen.storyboard"; sourceTree = "<group>"; };
+		6FF1D5AD202D66EC00F38E61 /* SplashScreenControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenControllerViewController.swift; sourceTree = "<group>"; };
 		81281D87511F743CCD9D5CFE /* Pods-DemandDriver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemandDriver.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemandDriver/Pods-DemandDriver.release.xcconfig"; sourceTree = "<group>"; };
 		898C9111B0C099037DC8E055 /* Pods-DemandDriverTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemandDriverTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemandDriverTests/Pods-DemandDriverTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9DA05E0FB592FB4AAA808FA0 /* Pods-DemandDriverTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemandDriverTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemandDriverTests/Pods-DemandDriverTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,13 +132,13 @@
 			children = (
 				47A32D382029AD37008954EF /* AppDelegate.swift */,
 				47A32D3A2029AD37008954EF /* HomeViewController.swift */,
-				47A32D3C2029AD38008954EF /* Main.storyboard */,
+				6FF1D5AD202D66EC00F38E61 /* SplashScreenControllerViewController.swift */,
 				47A32D422029AD38008954EF /* Assets.xcassets */,
+				6FF1D5AB202D662300F38E61 /* StoryBoard */,
 				47A32D442029AD38008954EF /* LaunchScreen.storyboard */,
 				47A32D472029AD38008954EF /* Info.plist */,
 				47A32D3F2029AD38008954EF /* DemandDriver.xcdatamodeld */,
 				470D3D3B202ADA6200648433 /* CallDriverMapViewController.swift */,
-				470D3D3E202B00F100648433 /* Login.storyboard */,
 				470D3D40202B25F900648433 /* LoginViewController.swift */,
 				47E8C677202C146B001AC7E1 /* ViewExtender.swift */,
 				47B31766202D733F00293F54 /* SignUpViewController.swift */,
@@ -181,6 +185,16 @@
 				CF078F9154A02B1C1E3E3007 /* Pods_DemandDriverUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6FF1D5AB202D662300F38E61 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				47A32D3C2029AD38008954EF /* Main.storyboard */,
+				6FF1D5A9202D661A00F38E61 /* Splash Screen.storyboard */,
+				470D3D3E202B00F100648433 /* Login.storyboard */,
+			);
+			path = StoryBoard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,6 +316,7 @@
 				470D3D3F202B00F100648433 /* Login.storyboard in Resources */,
 				47A32D462029AD38008954EF /* LaunchScreen.storyboard in Resources */,
 				47A32D432029AD38008954EF /* Assets.xcassets in Resources */,
+				6FF1D5AA202D661A00F38E61 /* Splash Screen.storyboard in Resources */,
 				47A32D3E2029AD38008954EF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FF1D5AE202D66EC00F38E61 /* SplashScreenControllerViewController.swift in Sources */,
 				47A32D3B2029AD37008954EF /* HomeViewController.swift in Sources */,
 				47B31767202D733F00293F54 /* SignUpViewController.swift in Sources */,
 				47E8C678202C146B001AC7E1 /* ViewExtender.swift in Sources */,
