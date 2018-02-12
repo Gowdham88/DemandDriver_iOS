@@ -9,7 +9,9 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
+//    let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
+//    var phoneTest = NSPredicate()
     @IBOutlet weak var sampleView: UIView!
     
     @IBOutlet weak var registerButtonAsDriver: UIButton!
@@ -18,14 +20,16 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var arrowButton: UIButton!
     @IBOutlet weak var loginMainView: UIView!
+    @IBOutlet weak var emailText: UITextField!
+    @IBOutlet weak var pwdText: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
-     self.navigationController?.navigationBar.isHidden = true
-
+        self.hideKeyboardOnTap(#selector(self.dismissKeyboard))
+// Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.isHidden = true
 // for main login view
         
         loginMainView.clipsToBounds = true
@@ -97,12 +101,7 @@ class LoginViewController: UIViewController {
         arrowButton.layer.shadowOpacity = 5
         arrowButton.layer.shadowRadius = 10
         arrowButton.layer.masksToBounds =  false
-        
-        
-        
-        
-        
-        
+   
         
     }
 
@@ -111,16 +110,62 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    @IBAction func arrowTap(_ sender: Any) {
+        
+        let phNumber = emailText.text
+        let password = pwdText.text
+        
+        
+        
+        if (phNumber?.isEmpty)! {
+            displayAlertMessage(messageToDisplay: "All fields are required to fill in",title: "Alert")
+                        return
+            }
+        if (password?.isEmpty)! {
+            displayAlertMessage(messageToDisplay: "All fields are required to fill in",title: "Alert")
+            return
+        }
+        
+        
 }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    func validate(value: String) -> Bool {
+        let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let result =  phoneTest.evaluate(with: value)
+        return result
+    }
+    
+   
+}//class
+extension LoginViewController {
+    
+    // to show alert
+    
+    func displayAlertMessage(messageToDisplay: String,title : String)
+    {
+        let alertController = UIAlertController(title: title, message: messageToDisplay, preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+            
+            // Code in this block will trigger when OK button tapped.
+            print("Ok button tapped");
+            
+        }
+        alertController.addAction(OKAction)
+        self.present(alertController, animated: true, completion:nil)
+}
+}
+extension LoginViewController {
+    func hideKeyboardOnTap(_ selector: Selector) {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: selector)
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+}
+
+
+
 
