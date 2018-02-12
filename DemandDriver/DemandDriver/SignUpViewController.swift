@@ -8,23 +8,77 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupMainView: UIView!
     @IBOutlet weak var tickButton: UIButton!
     @IBOutlet weak var tickRoundedImage: UIImageView!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBAction func didTappedSignUp(_ sender: Any) {
+      
+        if  nameTextField.text != nil && emailTextField.text != nil && passwordTextField.text != nil && addressTextField.text != nil && phoneNumberTextField.text != nil {
+            
+            
+        }else{
+            
+        }
+        
+            
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         tickRoundedImage.layer.cornerRadius = tickRoundedImage.frame.size.height/2
         tickRoundedImage.clipsToBounds      = true
+        tickRoundedImage.layer.shadowColor = UIColor.white.cgColor
+        tickRoundedImage.layer.shadowOffset = CGSize(width: 2, height: 2)
+        tickRoundedImage.layer.shadowOpacity = 0.9
+        tickRoundedImage.layer.shadowRadius = 3.0 //Here your control your blur
+       // tickRoundedImage.layer.masksToBounds =  true
+       // tickRoundedImage.backgroundColor = UIColor.clear
+//        tickButton.backgroundColor = UIColor.clear
+//        tickButton.layer.shadowOpacity = 5.0
+//        tickButton.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+//        tickButton.layer.shadowRadius = 10.0
+//        tickButton.layer.shadowColor = UIColor.yellow.cgColor
+//        tickButton.layer.masksToBounds =  true
+        //view.backgroundColor = UIColor.grayColor()
+
+   //     tickRoundedImage.layer.shadowPath = shadowPath.cgPath
+//        tickButton.layer.shadowColor = UIColor.white.cgColor
+//        tickButton.layer.shadowOffset = CGSize(width: 1, height: 1)
+//        tickButton.layer.shadowOpacity = 5
+//        tickButton.layer.shadowRadius = 10
+//        tickButton.layer.masksToBounds =  false
         
      addShadowForMainLoginView()
         
       addShadowForLoginButton()
 
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if(textField == nameTextField){
+            nameTextField.resignFirstResponder()
+        }
+        else if(textField == emailTextField){
+            emailTextField.resignFirstResponder()
+        }
+        else if(textField == passwordTextField){
+            passwordTextField.resignFirstResponder()
+        }
+        else if(textField == addressTextField){
+            addressTextField.resignFirstResponder()
+        }
+        else if(textField == phoneNumberTextField){
+            phoneNumberTextField.resignFirstResponder()
+        }
+        return true
     }
     
     func addShadowForLoginButton() {
