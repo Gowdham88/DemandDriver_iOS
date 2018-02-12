@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t3O-ka-YvO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KiO-Zr-wDU">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -258,7 +258,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                             </textField>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zID-Fx-R4i">
                                                 <rect key="frame" x="15" y="86" width="250" height="1"/>
@@ -270,7 +270,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad"/>
                                             </textField>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="pTO-67-GiS">
                                                 <rect key="frame" x="15" y="100" width="25" height="25"/>
@@ -310,6 +310,9 @@
                                                     <constraint firstAttribute="height" constant="19" id="zZI-zO-mS2"/>
                                                 </constraints>
                                                 <state key="normal" image="arrow"/>
+                                                <connections>
+                                                    <action selector="arrowTap:" destination="KiO-Zr-wDU" eventType="touchUpInside" id="Yma-f1-FQo"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.047058823530000002" green="0.74117647060000003" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -439,7 +442,9 @@
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
                         <outlet property="arrowButton" destination="exv-Pi-M96" id="NeJ-6L-KbB"/>
+                        <outlet property="emailText" destination="UHU-Va-Wew" id="pnD-RS-r6h"/>
                         <outlet property="loginMainView" destination="bZI-pg-NnE" id="6Bj-7a-S4z"/>
+                        <outlet property="pwdText" destination="tux-FD-xNs" id="L7r-jh-RF2"/>
                         <outlet property="registerButton" destination="ocH-cC-8RN" id="MJr-Y4-Jh1"/>
                         <outlet property="registerButtonAsDriver" destination="zCe-Gy-sWk" id="Vvu-xc-6Zo"/>
                     </connections>
