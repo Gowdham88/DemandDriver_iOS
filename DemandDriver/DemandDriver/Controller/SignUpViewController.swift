@@ -20,15 +20,16 @@ class SignUpViewController: UIViewController,UITextFieldDelegate, UIImagePickerC
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var uploadImg: NSLayoutConstraint!
     @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var uploadImage: ViewExtender!
+    @IBOutlet weak var uploadView: ViewExtender!
+    @IBOutlet weak var uploadImagePic: UIImageView!
     @IBOutlet weak var tickRoundedImage: UIButton!
     @IBOutlet weak var viewArrow: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showPop))
-        uploadImage.addGestureRecognizer(tapGesture)
-        uploadImage.isUserInteractionEnabled = true
+        uploadView.addGestureRecognizer(tapGesture)
+        uploadView.isUserInteractionEnabled = true
         
         let profileGesture = UITapGestureRecognizer(target: self, action: #selector(signupTap))
         viewArrow.addGestureRecognizer(profileGesture)
@@ -291,9 +292,9 @@ extension SignUpViewController: UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-//            uploadImage.image = image
-//            selectedImage = image
             
+            uploadImagePic.image = image
+          
         }
         dismiss(animated: true)
         
