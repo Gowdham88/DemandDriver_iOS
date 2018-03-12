@@ -141,7 +141,7 @@ class otp: UIViewController {
         
     }
     
-
+//
     
 //    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
 //        if user != nil{
