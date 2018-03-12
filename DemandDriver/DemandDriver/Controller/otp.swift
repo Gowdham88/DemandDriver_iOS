@@ -7,6 +7,12 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseAuthUI
+import FirebasePhoneAuthUI
+
+
 
 class otp: UIViewController {
 
@@ -104,5 +110,51 @@ class otp: UIViewController {
         otpView.layer.shadowPath = shadowpath2.cgPath
         
     }
-   
-}
+    
+    @IBAction func loginbtn(_ sender: UIButton) {
+        
+        let defaults = UserDefaults.standard
+        let credential: PhoneAuthCredential = PhoneAuthProvider.provider().credential(withVerificationID: defaults.string(forKey: "authVID")!,
+                                                                                      verificationCode: otpText.text!)
+        Auth.auth().signIn(with: credential)
+        {
+            (user, error) in
+            if error != nil
+            {
+                print("error: \(String(describing: error?.localizedDescription))")
+            }
+            else
+            {
+                print("Phone number: \(String(describing: user?.phoneNumber))")
+                let userInfo = user?.providerData[0]
+                print("Provider ID: \(String(describing: userInfo?.providerID))")
+                
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController")
+                self.present(vc!, animated: true, completion: nil)
+//                self.performSegue(withIdentifier: "HomeViewController", sender: Any?.self)
+                
+            }
+            
+        }
+
+        
+        
+    }
+    
+
+    
+//    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
+//        if user != nil{
+//            // here we need to check if current user is registered or not.
+//            var ref: DatabaseReference!
+//            ref = Database.database().reference()
+//            let userID = Auth.auth().currentUser?.uid
+//        } { (error) in
+//            print(error.localizedDescription)
+//        }
+//    }else if error != nil{
+//    print(error?.localizedDescription)
+//    }
+//}
+    
+}//class
