@@ -27,6 +27,9 @@ class SignUpViewController: UIViewController,UITextFieldDelegate, UIImagePickerC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+         self.navigationController?.navigationBar.isHidden = true
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showPop))
         uploadView.addGestureRecognizer(tapGesture)
         uploadView.isUserInteractionEnabled = true
@@ -44,29 +47,6 @@ self.hideKeyboardOnTap(#selector(self.dismissKeyboard))
         viewArrow.layer.shadowOffset = CGSize(width: 2, height: 2)
         viewArrow.layer.shadowOpacity = 0.9
         viewArrow.layer.shadowRadius = 2.0 //Here your control your blur
-        
-//        tickRoundedImage.layer.shadowColor = UIColor.white.cgColor
-//        //         arrowButton.layer.shadowColor = UIColor.red.cgColor
-//        tickRoundedImage.layer.shadowOffset = CGSize(width: 1, height: 1)
-//        tickRoundedImage.layer.shadowOpacity = 5
-//        tickRoundedImage.layer.shadowRadius = 10
-//        tickRoundedImage.layer.masksToBounds =  false
-       // tickRoundedImage.layer.masksToBounds =  true
-       // tickRoundedImage.backgroundColor = UIColor.clear
-//        tickButton.backgroundColor = UIColor.clear
-//        tickButton.layer.shadowOpacity = 5.0
-//        tickButton.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-//        tickButton.layer.shadowRadius = 10.0
-//        tickButton.layer.shadowColor = UIColor.yellow.cgColor
-//        tickButton.layer.masksToBounds =  true
-        //view.backgroundColor = UIColor.grayColor()
-
-   //     tickRoundedImage.layer.shadowPath = shadowPath.cgPath
-//        tickButton.layer.shadowColor = UIColor.white.cgColor
-//        tickButton.layer.shadowOffset = CGSize(width: 1, height: 1)
-//        tickButton.layer.shadowOpacity = 5
-//        tickButton.layer.shadowRadius = 10
-//        tickButton.layer.masksToBounds =  false
         addShadowForMainLoginView()
         addShadowForLoginButton()
 
