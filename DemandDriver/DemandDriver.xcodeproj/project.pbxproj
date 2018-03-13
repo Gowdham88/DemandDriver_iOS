@@ -22,6 +22,7 @@
 		47A32D5C2029AD38008954EF /* DemandDriverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A32D5B2029AD38008954EF /* DemandDriverUITests.swift */; };
 		47B31767202D733F00293F54 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B31766202D733F00293F54 /* SignUpViewController.swift */; };
 		47E8C678202C146B001AC7E1 /* ViewExtender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E8C677202C146B001AC7E1 /* ViewExtender.swift */; };
+		6F2E38AC2058110D00FFC055 /* TariffTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2E38AB2058110D00FFC055 /* TariffTableViewController.swift */; };
 		6FF1D5AA202D661A00F38E61 /* Splash Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FF1D5A9202D661A00F38E61 /* Splash Screen.storyboard */; };
 		6FF1D5AE202D66EC00F38E61 /* SplashScreenControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1D5AD202D66EC00F38E61 /* SplashScreenControllerViewController.swift */; };
 		6FF1D5B0202D9BD300F38E61 /* otp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1D5AF202D9BD300F38E61 /* otp.swift */; };
@@ -71,6 +72,7 @@
 		47A32D5D2029AD38008954EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47B31766202D733F00293F54 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		47E8C677202C146B001AC7E1 /* ViewExtender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtender.swift; sourceTree = "<group>"; };
+		6F2E38AB2058110D00FFC055 /* TariffTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffTableViewController.swift; sourceTree = "<group>"; };
 		6FF1D5A9202D661A00F38E61 /* Splash Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Splash Screen.storyboard"; sourceTree = "<group>"; };
 		6FF1D5AD202D66EC00F38E61 /* SplashScreenControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenControllerViewController.swift; sourceTree = "<group>"; };
 		6FF1D5AF202D9BD300F38E61 /* otp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otp.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				47A32D3A2029AD37008954EF /* HomeViewController.swift */,
 				47E8C677202C146B001AC7E1 /* ViewExtender.swift */,
 				3FE0A3D120569B6B00C43579 /* NewLoginViewController.swift */,
+				6F2E38AB2058110D00FFC055 /* TariffTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				47A32D412029AD38008954EF /* DemandDriver.xcdatamodeld in Sources */,
 				470D3D41202B25F900648433 /* LoginViewController.swift in Sources */,
 				6FF1D5B0202D9BD300F38E61 /* otp.swift in Sources */,
+				6F2E38AC2058110D00FFC055 /* TariffTableViewController.swift in Sources */,
 				470D3D3C202ADA6200648433 /* CallDriverMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
