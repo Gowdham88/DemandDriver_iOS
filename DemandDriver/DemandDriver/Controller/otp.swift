@@ -27,6 +27,11 @@ class otp: UIViewController {
     @IBOutlet weak var loginLbl: UILabel!
     @IBOutlet weak var btmView: UIView!
     @IBOutlet weak var btmImg: UIImageView!
+    
+    let db = Firestore.firestore()
+
+    var authHandle: AuthStateDidChangeListenerHandle!
+
     override func viewDidLoad() {
         super.viewDidLoad()
       addShadowForLoginLabel()
@@ -123,38 +128,159 @@ class otp: UIViewController {
             {
                 print("error: \(String(describing: error?.localizedDescription))")
             }
-            else
+            else if user != nil
             {
+               
+                
                 print("Phone number: \(String(describing: user?.phoneNumber))")
                 let userInfo = user?.providerData[0]
                 print("Provider ID: \(String(describing: userInfo?.providerID))")
                 
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController")
-                self.present(vc!, animated: true, completion: nil)
-//                self.performSegue(withIdentifier: "HomeViewController", sender: Any?.self)
+                let currentUser = Auth.auth().currentUser?.uid
+                var ref: DocumentReference? = nil
+
+                let docRef =  self.db.collection("Users").document(currentUser!)
+                print("currentUser:::\(String(describing: currentUser))")
+                print("docRef:::\(String(describing: docRef))")
+
+                docRef.getDocument { (documents, error) in
+                    
+                    if let document = documents {
+//                        print("Document data: \(document)")
+                        print("already exists")
+                        
+                        
+                    } else {
+                        print("Document does not exist")
+                    }
+//                    if document != nil {
+////                        print("Document data: \(document.data())")
+//                        print("already exists")
+//
+//                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                        let controller = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+//                        self.present(controller, animated: true, completion: nil)
+//
+//                    } else {
+//                        print("Document does not exist")
+//                        print("insert data:::::")
+//                        let currentUser = Auth.auth().currentUser?.uid
+//
+//                        var ref: DocumentReference? = nil
+//                        ref = self.db.collection("Users").addDocument(data: [
+//                            "phoneNumber"   : user?.phoneNumber as Any
+//
+//                        ]) { err in
+//                            if let err = err {
+//
+//                                print("Error adding document: \(err)")
+//
+//                            } else {
+//
+//                                print("Document added with ID: \(ref!.documentID)")
+//                                let storyboard  = UIStoryboard(name: "Login", bundle: nil)
+//                                let vc          = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+//                                self.navigationController?.pushViewController(vc, animated: true)
+//
+//                            }
+//                        }
+//
+//                    }
+                }
+                
+        
+
+                
+//                var ref: DocumentReference? = nil
+//                ref = self.db.collection("Users").addDocument(data: [
+//                                        "phoneNumber"   : user?.phoneNumber as Any
+//
+//                                    ]) { err in
+//                                        if let err = err {
+//
+//                                            print("Error adding document: \(err)")
+//
+//                                        } else {
+//
+//                                            print("Document added with ID: \(ref!.documentID)")
+//
+//                                        }
+//                                    }
+//
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let controller = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+//                self.present(controller, animated: true, completion: nil)
+
+//                self.hasUserSignedIn()
+                
+            } else {
+                
+                    
+                    
+                    
+                }
+
+
+                
+                
+                
                 
             }
             
         }
 
+    
         
-        
-    }
+    
     
 //
     
-//    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
-//        if user != nil{
-//            // here we need to check if current user is registered or not.
-//            var ref: DatabaseReference!
-//            ref = Database.database().reference()
-//            let userID = Auth.auth().currentUser?.uid
-//        } { (error) in
-//            print(error.localizedDescription)
+//    func hasUserSignedIn() {
+//
+//        authHandle = Auth.auth().addStateDidChangeListener { [unowned self] auth, user in
+//
+//            if user == nil {
+//
+//                print("insert data:::::")
+//                var ref: DocumentReference? = nil
+//
+//                ref = self.db.collection("Users").addDocument(data: [
+//                    "phoneNumber"   : user?.phoneNumber as Any
+//
+//                ]) { err in
+//                    if let err = err {
+//
+//                        print("Error adding document: \(err)")
+//
+//                    } else {
+//
+//                        print("Document added with ID: \(ref!.documentID)")
+//                        let storyboard  = UIStoryboard(name: "Login", bundle: nil)
+//                        let vc          = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+//                        self.navigationController?.pushViewController(vc, animated: true)
+//
+//                    }
+//                }
+//
+//
+//            } else {
+//
+//                print("PoneNumber:::::: already phone number exist")
+//
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let controller = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+//                self.present(controller, animated: true, completion: nil)
+//
+//
+//            }
+//
 //        }
-//    }else if error != nil{
-//    print(error?.localizedDescription)
+//
 //    }
-//}
     
+
+    
+
+   
+
 }//class
