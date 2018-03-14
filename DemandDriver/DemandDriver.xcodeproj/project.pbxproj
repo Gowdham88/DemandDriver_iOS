@@ -22,7 +22,9 @@
 		47A32D5C2029AD38008954EF /* DemandDriverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A32D5B2029AD38008954EF /* DemandDriverUITests.swift */; };
 		47B31767202D733F00293F54 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B31766202D733F00293F54 /* SignUpViewController.swift */; };
 		47E8C678202C146B001AC7E1 /* ViewExtender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E8C677202C146B001AC7E1 /* ViewExtender.swift */; };
-		6F2E38AC2058110D00FFC055 /* TariffTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2E38AB2058110D00FFC055 /* TariffTableViewController.swift */; };
+		6F1DD3AB2058E1D700A73659 /* TariffTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1DD3AA2058E1D700A73659 /* TariffTableViewCell.swift */; };
+		6F1DD3AD2058E1FA00A73659 /* TariffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1DD3AC2058E1FA00A73659 /* TariffViewController.swift */; };
+		6F1DD3B02059204000A73659 /* MRCountryPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1DD3B12059204000A73659 /* MRCountryPicker.framework */; };
 		6FF1D5AA202D661A00F38E61 /* Splash Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FF1D5A9202D661A00F38E61 /* Splash Screen.storyboard */; };
 		6FF1D5AE202D66EC00F38E61 /* SplashScreenControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1D5AD202D66EC00F38E61 /* SplashScreenControllerViewController.swift */; };
 		6FF1D5B0202D9BD300F38E61 /* otp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1D5AF202D9BD300F38E61 /* otp.swift */; };
@@ -72,7 +74,10 @@
 		47A32D5D2029AD38008954EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47B31766202D733F00293F54 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		47E8C677202C146B001AC7E1 /* ViewExtender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtender.swift; sourceTree = "<group>"; };
-		6F2E38AB2058110D00FFC055 /* TariffTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffTableViewController.swift; sourceTree = "<group>"; };
+		6F1DD3AA2058E1D700A73659 /* TariffTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffTableViewCell.swift; sourceTree = "<group>"; };
+		6F1DD3AC2058E1FA00A73659 /* TariffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffViewController.swift; sourceTree = "<group>"; };
+		6F1DD3AF20591F1F00A73659 /* CountryPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CountryPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F1DD3B12059204000A73659 /* MRCountryPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MRCountryPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FF1D5A9202D661A00F38E61 /* Splash Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Splash Screen.storyboard"; sourceTree = "<group>"; };
 		6FF1D5AD202D66EC00F38E61 /* SplashScreenControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenControllerViewController.swift; sourceTree = "<group>"; };
 		6FF1D5AF202D9BD300F38E61 /* otp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otp.swift; sourceTree = "<group>"; };
@@ -91,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F1DD3B02059204000A73659 /* MRCountryPicker.framework in Frameworks */,
 				7F87F3FC767EBC7AF9797C43 /* Pods_DemandDriver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,6 +149,7 @@
 				47A32D382029AD37008954EF /* AppDelegate.swift */,
 				6FF1D5B1202DB21000F38E61 /* Controller */,
 				47A32D422029AD38008954EF /* Assets.xcassets */,
+				6F1DD3A92058E17D00A73659 /* View */,
 				6FF1D5AB202D662300F38E61 /* StoryBoard */,
 				47A32D442029AD38008954EF /* LaunchScreen.storyboard */,
 				47A32D472029AD38008954EF /* Info.plist */,
@@ -186,11 +193,21 @@
 		624234DE6A2FF15C0DC9F070 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6F1DD3B12059204000A73659 /* MRCountryPicker.framework */,
+				6F1DD3AF20591F1F00A73659 /* CountryPicker.framework */,
 				C449E3DD581E3AD498F476C2 /* Pods_DemandDriver.framework */,
 				C6ACB1FFFA9CE0ED03CA5DE7 /* Pods_DemandDriverTests.framework */,
 				CF078F9154A02B1C1E3E3007 /* Pods_DemandDriverUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6F1DD3A92058E17D00A73659 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6F1DD3AA2058E1D700A73659 /* TariffTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		6FF1D5AB202D662300F38E61 /* StoryBoard */ = {
@@ -214,7 +231,7 @@
 				47A32D3A2029AD37008954EF /* HomeViewController.swift */,
 				47E8C677202C146B001AC7E1 /* ViewExtender.swift */,
 				3FE0A3D120569B6B00C43579 /* NewLoginViewController.swift */,
-				6F2E38AB2058110D00FFC055 /* TariffTableViewController.swift */,
+				6F1DD3AC2058E1FA00A73659 /* TariffViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -405,9 +422,32 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DemandDriver/Pods-DemandDriver-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/MRCountryPicker/MRCountryPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRCountryPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -436,11 +476,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DemandDriver/Pods-DemandDriver-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebasePhoneAuthUI.bundle",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebasePhoneAuthUI.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
@@ -464,7 +508,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BA99090AE2B30A7FA2330AFC /* [CP] Check Pods Manifest.lock */ = {
@@ -482,7 +526,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C8E886EC501B3407C3C1302D /* [CP] Embed Pods Frameworks */ = {
@@ -515,7 +559,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -529,12 +573,13 @@
 				47A32D3B2029AD37008954EF /* HomeViewController.swift in Sources */,
 				47B31767202D733F00293F54 /* SignUpViewController.swift in Sources */,
 				3FE0A3D220569B6B00C43579 /* NewLoginViewController.swift in Sources */,
+				6F1DD3AD2058E1FA00A73659 /* TariffViewController.swift in Sources */,
+				6F1DD3AB2058E1D700A73659 /* TariffTableViewCell.swift in Sources */,
 				47E8C678202C146B001AC7E1 /* ViewExtender.swift in Sources */,
 				47A32D392029AD37008954EF /* AppDelegate.swift in Sources */,
 				47A32D412029AD38008954EF /* DemandDriver.xcdatamodeld in Sources */,
 				470D3D41202B25F900648433 /* LoginViewController.swift in Sources */,
 				6FF1D5B0202D9BD300F38E61 /* otp.swift in Sources */,
-				6F2E38AC2058110D00FFC055 /* TariffTableViewController.swift in Sources */,
 				470D3D3C202ADA6200648433 /* CallDriverMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

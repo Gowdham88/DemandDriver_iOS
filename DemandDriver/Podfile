@@ -13,6 +13,9 @@ target 'DemandDriver' do
   pod 'Firebase/Messaging'
   pod 'FirebaseUI/Auth'
   pod 'FirebaseUI/Phone'
+  pod 'MRCountryPicker', '~> 0.0.7'
+  
+   
 
 
   # Pods for DemandDriver

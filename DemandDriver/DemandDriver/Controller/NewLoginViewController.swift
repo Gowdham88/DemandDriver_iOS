@@ -11,13 +11,42 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import UserNotifications
+import MRCountryPicker
 
 
-class NewLoginViewController: UIViewController {
+
+
+class NewLoginViewController: UIViewController,MRCountryPickerDelegate,UITextFieldDelegate {
+    
+    func countryPhoneCodePicker(_ picker: MRCountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
+        countryTextField.text = name + " " + phoneCode
+    }
+    
+    
+    
 
     @IBOutlet var phoneNumber: UITextField!
+    @IBOutlet weak var countryTextField: UITextField!
+    
+   
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var CountryPicker: MRCountryPicker!
+    @IBAction func closeButton(_ sender: Any) {
+        CountryPicker .isHidden = true
+        closeButton.isHidden = true
+    
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+          CountryPicker.isHidden = true
+          closeButton.isHidden = true
+          CountryPicker.countryPickerDelegate = self
+          CountryPicker.showPhoneNumbers = true
+         // CountryPicker.setCountry("Ind")
+         // CountryPicker.setCountryByName("India")
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -61,7 +90,15 @@ class NewLoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        CountryPicker.isHidden = false
+        closeButton.isHidden = false
+        return false
+    }
     
+    //picker view
+   
 
     /*
     // MARK: - Navigation
