@@ -12,14 +12,14 @@ class SignUpViewController: UIViewController,UITextFieldDelegate, UIImagePickerC
     
     let imagePicker = UIImagePickerController()
 
-    @IBOutlet weak var loginButton: UIButton!
+   // @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupMainView: UIView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+  //  @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var uploadImg: NSLayoutConstraint!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
+ //   @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var uploadView: ViewExtender!
     @IBOutlet weak var uploadImagePic: UIImageView!
     @IBOutlet weak var tickRoundedImage: UIButton!
@@ -48,7 +48,7 @@ self.hideKeyboardOnTap(#selector(self.dismissKeyboard))
         viewArrow.layer.shadowOpacity = 0.9
         viewArrow.layer.shadowRadius = 2.0 //Here your control your blur
         addShadowForMainLoginView()
-        addShadowForLoginButton()
+     //   addShadowForLoginButton()
 
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -58,41 +58,41 @@ self.hideKeyboardOnTap(#selector(self.dismissKeyboard))
         else if(textField == emailTextField){
             emailTextField.resignFirstResponder()
         }
-        else if(textField == passwordTextField){
-            passwordTextField.resignFirstResponder()
-        }
+//        else if(textField == passwordTextField){
+//            passwordTextField.resignFirstResponder()
+//        }
         else if(textField == addressTextField){
             addressTextField.resignFirstResponder()
         }
-        else if(textField == phoneNumberTextField){
-            phoneNumberTextField.resignFirstResponder()
-        }
+//        else if(textField == phoneNumberTextField){
+//            phoneNumberTextField.resignFirstResponder()
+//        }
         return true
     }
     
-    func addShadowForLoginButton() {
-        
-        //for login button
-        loginButton.layer.cornerRadius = loginButton.frame.size.height/2
-        loginButton.clipsToBounds = true
-        
-        if #available(iOS 11.0, *) {
-            loginButton.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner ]
-        } else {
-            // Fallback on earlier versions
-        }
-        
-        let shadowpath2 = UIBezierPath(roundedRect: self.loginButton.bounds, byRoundingCorners: [.topRight, .bottomRight], cornerRadii: CGSize(width: 58.0, height: 0.0))
-        
-        
-        
-        loginButton.layer.shadowColor = UIColor(red: 12/255.0, green: 189/255.0, blue: 239/255.0, alpha: 0.5).cgColor
-        loginButton.layer.shadowOffset = CGSize(width: 1, height: 1)
-        loginButton.layer.shadowOpacity = 0.5
-        loginButton.layer.shadowRadius = 10 //Here your control your blur
-        loginButton.layer.masksToBounds =  false
-        loginButton.layer.shadowPath = shadowpath2.cgPath
-    }
+//    func addShadowForLoginButton() {
+//
+//        //for login button
+////        loginButton.layer.cornerRadius = loginButton.frame.size.height/2
+//      //  loginButton.clipsToBounds = true
+//
+//        if #available(iOS 11.0, *) {
+//            loginButton.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner ]
+//        } else {
+//            // Fallback on earlier versions
+//        }
+//
+//        let shadowpath2 = UIBezierPath(roundedRect: self.loginButton.bounds, byRoundingCorners: [.topRight, .bottomRight], cornerRadii: CGSize(width: 58.0, height: 0.0))
+//
+//
+//
+//        loginButton.layer.shadowColor = UIColor(red: 12/255.0, green: 189/255.0, blue: 239/255.0, alpha: 0.5).cgColor
+//        loginButton.layer.shadowOffset = CGSize(width: 1, height: 1)
+//        loginButton.layer.shadowOpacity = 0.5
+//        loginButton.layer.shadowRadius = 10 //Here your control your blur
+//        loginButton.layer.masksToBounds =  false
+//        loginButton.layer.shadowPath = shadowpath2.cgPath
+//    }
     
     func addShadowForMainLoginView() {
         // for main login view
@@ -231,15 +231,18 @@ self.hideKeyboardOnTap(#selector(self.dismissKeyboard))
         
     }
     @IBAction func arrowtap(_ sender: Any) {
+        let storyboard = UIStoryboard(name:"Main", bundle:nil)
+        let vc = storyboard.instantiateViewController(withIdentifier:"HomeViewController" )as! HomeViewController
+        navigationController?.pushViewController(vc, animated: true)
         signupTap()
     }
     @objc func signupTap(){
         
         let name = nameTextField.text
         let email = emailTextField.text!.lowercased()
-        let password = passwordTextField.text
+   //     let password = passwordTextField.text
         let address = addressTextField.text
-        let phoneNumber = phoneNumberTextField.text
+    //    let phoneNumber = phoneNumberTextField.text
         
         let finalEmail = email.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
@@ -255,15 +258,15 @@ self.hideKeyboardOnTap(#selector(self.dismissKeyboard))
         }
         
         
-        if (name?.isEmpty)! || (email.isEmpty) || (password?.isEmpty)! || (address?.isEmpty)! || (phoneNumber?.isEmpty)! {
+        if (name?.isEmpty)! || (email.isEmpty)  || (address?.isEmpty)! {
             displayAlertMessage(messageToDisplay: "Fill all the fields",title: "Alert")
             return
         }
-        if (password != password) {
-            
-            displayAlertMessage(messageToDisplay: "Password is mismatch",title: "Alert")
-            return
-        }
+//        if (password != password) {
+//
+//            displayAlertMessage(messageToDisplay: "Password is mismatch",title: "Alert")
+//            return
+//        }
     }
  
 }
