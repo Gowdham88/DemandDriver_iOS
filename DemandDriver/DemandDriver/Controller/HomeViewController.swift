@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseAuthUI
+import FirebasePhoneAuthUI
 
 class HomeViewController: UIViewController {
 
@@ -80,6 +84,23 @@ class HomeViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @IBAction func logutBtn(_ sender: Any) {
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            
+            print("signout::)")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "NewLoginViewController")
+            self.present(controller, animated: true, completion: nil)
+            
+            
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
 
