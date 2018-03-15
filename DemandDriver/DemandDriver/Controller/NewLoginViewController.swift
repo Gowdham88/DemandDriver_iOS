@@ -11,17 +11,17 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import UserNotifications
-import MRCountryPicker
 
 
 
 
-class NewLoginViewController: UIViewController,MRCountryPickerDelegate,UITextFieldDelegate {
+
+class NewLoginViewController: UIViewController {
     
-    func countryPhoneCodePicker(_ picker: MRCountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
-        countryTextField.text = name + " " + phoneCode
-    }
-    
+//    func countryPhoneCodePicker(_ picker: MRCountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
+//        countryTextField.text = name + " " + phoneCode
+//    }
+//
     
     
 
@@ -30,19 +30,12 @@ class NewLoginViewController: UIViewController,MRCountryPickerDelegate,UITextFie
     
    
     @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var CountryPicker: MRCountryPicker!
-    @IBAction func closeButton(_ sender: Any) {
-        CountryPicker .isHidden = true
-        closeButton.isHidden = true
-    
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-          CountryPicker.isHidden = true
-          closeButton.isHidden = true
-          CountryPicker.countryPickerDelegate = self
-          CountryPicker.showPhoneNumbers = true
+//          CountryPicker.isHidden = true
+//          closeButton.isHidden = true
+//          CountryPicker.countryPickerDelegate = self
+//          CountryPicker.showPhoneNumbers = true
          // CountryPicker.setCountry("Ind")
          // CountryPicker.setCountryByName("India")
         
@@ -90,12 +83,12 @@ class NewLoginViewController: UIViewController,MRCountryPickerDelegate,UITextFie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        
-        CountryPicker.isHidden = false
-        closeButton.isHidden = false
-        return false
-    }
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//
+//        CountryPicker.isHidden = false
+//        closeButton.isHidden = false
+//        return false
+//    }
     
     //picker view
    
