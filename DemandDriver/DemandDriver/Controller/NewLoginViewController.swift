@@ -18,10 +18,7 @@ import UserNotifications
 
 class NewLoginViewController: UIViewController {
     
-//    func countryPhoneCodePicker(_ picker: MRCountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
-//        countryTextField.text = name + " " + phoneCode
-//    }
-//
+
     
     
 
@@ -29,7 +26,7 @@ class NewLoginViewController: UIViewController {
     @IBOutlet weak var countryTextField: UITextField!
     
    
-    @IBOutlet weak var closeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //          CountryPicker.isHidden = true

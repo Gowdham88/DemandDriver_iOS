@@ -11,6 +11,7 @@ import GoogleMaps
 
 class CallDriverMapViewController: UIViewController {
 
+    @IBOutlet weak var mapview: GMSMapView!
     @IBOutlet weak var navigationItemList: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,20 +21,21 @@ class CallDriverMapViewController: UIViewController {
         // Create a GMSCameraPosition that tells the map to display the
         // coordinate -33.86,151.20 at zoom level 6.
         let camera = GMSCameraPosition.camera(withLatitude: 12.8726, longitude: 80.2197, zoom: 6.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        view = mapView
+        mapview = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+//          view = mapview
         
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: 12.8726, longitude: 80.2197)
         marker.title = "sathyabama"
         marker.snippet = "Chennai"
-        marker.map = mapView
+        marker.map = mapview
         setNavBar()
     }
 
     func setNavBar() {
          navigationItemList.title = "Book Appointment"
+        
         
     }
     override func didReceiveMemoryWarning() {
