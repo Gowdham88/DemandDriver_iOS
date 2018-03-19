@@ -13,11 +13,30 @@ import FirebaseDatabase
 import UserNotifications
 
 
+
+
+
 class NewLoginViewController: UIViewController {
+    
+
+    
+    
 
     @IBOutlet var phoneNumber: UITextField!
+    @IBOutlet weak var countryTextField: UITextField!
+    
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+//          CountryPicker.isHidden = true
+//          closeButton.isHidden = true
+//          CountryPicker.countryPickerDelegate = self
+//          CountryPicker.showPhoneNumbers = true
+         // CountryPicker.setCountry("Ind")
+         // CountryPicker.setCountryByName("India")
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -61,7 +80,15 @@ class NewLoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//
+//        CountryPicker.isHidden = false
+//        closeButton.isHidden = false
+//        return false
+//    }
     
+    //picker view
+   
 
     /*
     // MARK: - Navigation
