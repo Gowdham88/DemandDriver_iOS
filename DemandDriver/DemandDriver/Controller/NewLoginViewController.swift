@@ -36,17 +36,23 @@ class NewLoginViewController: UIViewController {
          // CountryPicker.setCountry("Ind")
          // CountryPicker.setCountryByName("India")
         
-        
+        countryTextField.text = "+91"
 
         // Do any additional setup after loading the view.
     }
 
+    
+    
     @IBAction func sendCode(_ sender: UIButton) {
         
-        let alert = UIAlertController(title: "Phone Number", message: "Is this your phone number? \n \(phoneNumber.text!)", preferredStyle: .alert)
+        let mobileNumber = countryTextField.text! + phoneNumber.text!
+        
+        print("mobileNumber::::\(mobileNumber)")
+        
+        let alert = UIAlertController(title: "Phone Number", message: "Is this your phone number? \n \(mobileNumber)", preferredStyle: .alert)
         let action = UIAlertAction(title: "Yes", style: .default)
         {
-            (UIAlertAction) in PhoneAuthProvider.provider().verifyPhoneNumber(self.phoneNumber.text!)
+            (UIAlertAction) in PhoneAuthProvider.provider().verifyPhoneNumber(mobileNumber)
             {
                 (verificationID, error) in
                 if error != nil

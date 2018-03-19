@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import GoogleMaps
 import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 import UserNotifications
 
 
@@ -17,11 +19,13 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var database:DatabaseReference!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        
 
         GMSServices.provideAPIKey("AIzaSyB-SuyHSWWYfiRYJ49ph9ns8GGSSu9IQpQ")
        
