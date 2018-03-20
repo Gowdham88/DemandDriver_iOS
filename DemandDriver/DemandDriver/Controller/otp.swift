@@ -10,13 +10,16 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseAuthUI
+import FirebaseFirestore
 import FirebasePhoneAuthUI
 
 
 
 class otp: UIViewController {
 
-    @IBOutlet weak var viewTop: UIView!
+   
+  
+    @IBOutlet weak var viewTop: UIImageView!
     @IBOutlet weak var imgTop: UIImageView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var otpView: UIView!
@@ -31,17 +34,28 @@ class otp: UIViewController {
     let db = Firestore.firestore()
 
     var authHandle: AuthStateDidChangeListenerHandle!
+    var tapgesture = UITapGestureRecognizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
       addShadowForLoginLabel()
       addShadowForResetView()
       addShadowOTPview()
+      tapgesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+      tapgesture.numberOfTapsRequired = 1
+      tapgesture.numberOfTouchesRequired = 1
+      otpView.addGestureRecognizer(tapgesture)
+      otpView.isUserInteractionEnabled = true
+      
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+    }
+  
     
     func addShadowForLoginLabel() {
         
