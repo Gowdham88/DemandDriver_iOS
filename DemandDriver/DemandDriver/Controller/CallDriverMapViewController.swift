@@ -7,37 +7,74 @@
 //
 
 import UIKit
-import GoogleMaps
+import MapKit
+import CoreLocation
+//import GoogleMaps
 
-class CallDriverMapViewController: UIViewController {
+class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
 
-    @IBOutlet weak var mapview: GMSMapView!
+//    @IBOutlet weak var mapview: GMSMapView!
+   
+    @IBOutlet weak var mkmapView: MKMapView!
     @IBOutlet weak var navigationItemList: UINavigationItem!
+    var LocationManager = CLLocationManager()
+    let newPin = MKPointAnnotation()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        mkmapView.showsUserLocation = true
+        mkmapView.isZoomEnabled = true
+        mkmapView.isScrollEnabled = true
+        mkmapView.mapType = MKMapType.standard
+        
+        if(CLLocationManager.locationServicesEnabled())
+        {
+            LocationManager = CLLocationManager()
+            LocationManager.delegate = self
+            LocationManager.desiredAccuracy = kCLLocationAccuracyBest
+            
+            LocationManager.requestWhenInUseAuthorization()
+            LocationManager.requestAlwaysAuthorization()
+            LocationManager.startUpdatingLocation()
+        }
+    }
+   
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last! as CLLocation
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.10, longitudeDelta: 0.10))
+        mkmapView.setRegion(region, animated: true)
+//        if mkmapView.annotations.count != 0 {
+//            annotation  = mkmapView.annotations[0]
+//            mkmapView.removeAnnotation(annotation)
+//        }
+        newPin.coordinate = location.coordinate
+        mkmapView.addAnnotation(newPin)
+    }
+    
+        
         
         // Create a GMSCameraPosition that tells the map to display the
         // coordinate -33.86,151.20 at zoom level 6.
-        let camera = GMSCameraPosition.camera(withLatitude: 12.8726, longitude: 80.2197, zoom: 6.0)
-        mapview = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-//          view = mapview
-        
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 12.8726, longitude: 80.2197)
-        marker.title = "sathyabama"
-        marker.snippet = "Chennai"
-        marker.map = mapview
-        setNavBar()
-    }
+//        let camera = GMSCameraPosition.camera(withLatitude: 12.8726, longitude: 80.2197, zoom: 6.0)
+//        mapview = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+////          view = mapview
+//
+//        // Creates a marker in the center of the map.
+//        let marker = GMSMarker()
+//        marker.position = CLLocationCoordinate2D(latitude: 12.8726, longitude: 80.2197)
+//        marker.title = "sathyabama"
+//        marker.snippet = "Chennai"
+//        marker.map = mapview
+//        setNavBar()
 
-    func setNavBar() {
-         navigationItemList.title = "Book Appointment"
-        
-        
-    }
+
+//    func setNavBar() {
+//         navigationItemList.title = "Book Appointment"
+//
+//
+//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -8,11 +8,13 @@
 
 import UIKit
 import CoreData
-import GoogleMaps
+//import GoogleMaps
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 import UserNotifications
+import MapKit
+import CoreLocation
 
 
 @UIApplicationMain
@@ -27,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
 
-        GMSServices.provideAPIKey("AIzaSyB-SuyHSWWYfiRYJ49ph9ns8GGSSu9IQpQ")
+       // GMSServices.provideAPIKey("AIzaSyB-SuyHSWWYfiRYJ49ph9ns8GGSSu9IQpQ")
        
         return true
     }
