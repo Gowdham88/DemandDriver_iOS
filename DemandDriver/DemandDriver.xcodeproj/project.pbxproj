@@ -28,6 +28,8 @@
 		6FA723F5205BCE9F0094E3A2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA723F4205BCE9F0094E3A2 /* SettingsViewController.swift */; };
 		6FB6EDB9205A4323008F7D48 /* CurrentBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6EDB8205A4323008F7D48 /* CurrentBookingViewController.swift */; };
 		6FB6EDBB205A434C008F7D48 /* CurrentBookingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6EDBA205A434C008F7D48 /* CurrentBookingTableViewCell.swift */; };
+		6FEEF9132060D6A700FD966A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FEEF9122060D6A600FD966A /* MapKit.framework */; };
+		6FEEF9152060DAD900FD966A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FEEF9142060DAD900FD966A /* CoreLocation.framework */; };
 		6FF1D5AA202D661A00F38E61 /* Splash Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FF1D5A9202D661A00F38E61 /* Splash Screen.storyboard */; };
 		6FF1D5AE202D66EC00F38E61 /* SplashScreenControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1D5AD202D66EC00F38E61 /* SplashScreenControllerViewController.swift */; };
 		6FF1D5B0202D9BD300F38E61 /* otp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1D5AF202D9BD300F38E61 /* otp.swift */; };
@@ -85,6 +87,8 @@
 		6FA723F4205BCE9F0094E3A2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6FB6EDB8205A4323008F7D48 /* CurrentBookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentBookingViewController.swift; sourceTree = "<group>"; };
 		6FB6EDBA205A434C008F7D48 /* CurrentBookingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentBookingTableViewCell.swift; sourceTree = "<group>"; };
+		6FEEF9122060D6A600FD966A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		6FEEF9142060DAD900FD966A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6FF1D5A9202D661A00F38E61 /* Splash Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Splash Screen.storyboard"; sourceTree = "<group>"; };
 		6FF1D5AD202D66EC00F38E61 /* SplashScreenControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenControllerViewController.swift; sourceTree = "<group>"; };
 		6FF1D5AF202D9BD300F38E61 /* otp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otp.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FEEF9152060DAD900FD966A /* CoreLocation.framework in Frameworks */,
+				6FEEF9132060D6A700FD966A /* MapKit.framework in Frameworks */,
 				7F87F3FC767EBC7AF9797C43 /* Pods_DemandDriver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,6 +205,8 @@
 		624234DE6A2FF15C0DC9F070 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6FEEF9142060DAD900FD966A /* CoreLocation.framework */,
+				6FEEF9122060D6A600FD966A /* MapKit.framework */,
 				6F1DD3B12059204000A73659 /* MRCountryPicker.framework */,
 				6F1DD3AF20591F1F00A73659 /* CountryPicker.framework */,
 				C449E3DD581E3AD498F476C2 /* Pods_DemandDriver.framework */,
@@ -695,7 +703,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -746,7 +754,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -763,7 +771,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XSJRRDKMW9;
 				INFOPLIST_FILE = DemandDriver/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CZ.Demand-Driver";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -781,7 +789,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XSJRRDKMW9;
 				INFOPLIST_FILE = DemandDriver/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CZ.Demand-Driver";
 				PRODUCT_NAME = "$(TARGET_NAME)";

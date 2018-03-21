@@ -25,12 +25,35 @@ class otp: UIViewController {
     @IBOutlet weak var otpView: UIView!
     @IBOutlet weak var otpText: UITextField!
     @IBOutlet weak var resetView: UIView!
-    @IBOutlet weak var resetlbl: UILabel!
+ //   @IBOutlet weak var resetlbl: UILabel!
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var loginLbl: UILabel!
     @IBOutlet weak var btmView: UIView!
     @IBOutlet weak var btmImg: UIImageView!
     
+    @IBAction func ResndOTPButton(_ sender: Any) {
+        let phonenumber = phoneNumberLabel.text
+        PhoneAuthProvider.provider().verifyPhoneNumber(phonenumber!)
+        {
+            (verificationID, error) in
+            if error != nil
+            {
+                print ("insde SendCode, there is error")
+                
+                print("error: \(String(describing: error?.localizedDescription))")
+                
+            }
+            else
+            {
+                print ("else  SendCode, going to move to next page")
+                let defaults = UserDefaults.standard
+                defaults.set(verificationID, forKey: "authVID")
+                
+            }
+        }
+    }
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    var phonestring = ""
     let db = Firestore.firestore()
 
     var authHandle: AuthStateDidChangeListenerHandle!
@@ -42,20 +65,22 @@ class otp: UIViewController {
       addShadowForLoginLabel()
       addShadowForResetView()
       addShadowOTPview()
-      tapgesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-      tapgesture.numberOfTapsRequired = 1
-      tapgesture.numberOfTouchesRequired = 1
-      otpView.addGestureRecognizer(tapgesture)
-      otpView.isUserInteractionEnabled = true
+//      tapgesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+//      tapgesture.numberOfTapsRequired = 1
+//      tapgesture.numberOfTouchesRequired = 1
+//      otpView.addGestureRecognizer(tapgesture)
+//      otpView.isUserInteractionEnabled = true
+        
+      phoneNumberLabel.text = phonestring
       
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    @objc func handleTap(_ sender: UITapGestureRecognizer) {
-    }
-  
+//    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+//       
+//    }
     
     func addShadowForLoginLabel() {
         

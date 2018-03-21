@@ -24,7 +24,7 @@ class NewLoginViewController: UIViewController {
 
     @IBOutlet var phoneNumber: UITextField!
     @IBOutlet weak var countryTextField: UITextField!
-    
+   
    
     
     override func viewDidLoad() {
@@ -69,8 +69,9 @@ class NewLoginViewController: UIViewController {
                     defaults.set(verificationID, forKey: "authVID")
                     //self.performSegue(withIdentifier: "code", sender: Any?.self)
                     
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "otp")
-                    self.present(vc!, animated: true, completion: nil)
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "otp") as! otp
+                    vc.phonestring = mobileNumber
+                    self.present(vc, animated: true, completion: nil)
                 }
             }
         }
