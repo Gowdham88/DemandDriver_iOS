@@ -9,12 +9,20 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseFirestore
+
 //import GoogleMaps
 
 class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
 
 //    @IBOutlet weak var mapview: GMSMapView!
-   
+   var ref: DocumentReference? = nil
+    let db = Firestore.firestore()
+
+    
     @IBOutlet weak var mkmapView: MKMapView!
     @IBOutlet weak var navigationItemList: UINavigationItem!
     var LocationManager = CLLocationManager()
@@ -42,16 +50,43 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last! as CLLocation
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let lat = location.coordinate.latitude
+        let long = location.coordinate.longitude
+        let center = CLLocationCoordinate2D(latitude: lat, longitude: long)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.10, longitudeDelta: 0.10))
+//        print("CurrentLocation of Lat:::: \(lat)")
+//        print("CurrentLocation of Long:::: \(long)")
         mkmapView.setRegion(region, animated: true)
-//        if mkmapView.annotations.count != 0 {
-//            annotation  = mkmapView.annotations[0]
-//            mkmapView.removeAnnotation(annotation)
-//        }
+       
         newPin.coordinate = location.coordinate
         mkmapView.addAnnotation(newPin)
+        
+//       Database.database().reference().child("Location").child(Auth.auth().currentUser!.uid).setValue(["latitude": lat, "longitude": long])
+        
+//        let docRef =  self.db.collection("Users").document(currentUser!)
+
+        
+//        let currentUser = Auth.auth().currentUser?.uid
+//        print("currentUser:::\(String(describing: currentUser))")
+//    }
+
+//        db.collection("Users").document().updateData([
+//            
+//            "Lat": lat,
+//            "Long": long  
+//            
+//        ]) { if let err = err {
+//                print("Error writing document: \(err)")
+//            } else {
+//                print("Document successfully written!")
+//            }
+//        
+//        }
+//      
+//        
     }
+    
+    
     
         
         

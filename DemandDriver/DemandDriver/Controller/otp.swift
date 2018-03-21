@@ -181,77 +181,45 @@ class otp: UIViewController {
                 let docRef =  self.db.collection("Users").document(currentUser!)
                 print("currentUser:::\(String(describing: currentUser))")
                 print("docRef:::\(String(describing: docRef))")
+                
+                
 
+                
+                
                 docRef.getDocument { (documents, error) in
-                    
+
                     if let document = documents {
 //                        print("Document data: \(document)")
-                        print("already exists")
+                        print("new user created")
+                        var ref: DocumentReference? = nil
                         
+                        self.db.collection("Users").document(currentUser!).setData([
+                            "phoneNumber": user?.phoneNumber as Any,
+                            "UID": currentUser as Any
+                            
+                        ]) { err in
+                            if let err = err {
+                                print("Error writing document: \(err)")
+                            } else {
+                                print("Document successfully written!")
+                            }
+                        }
+
                         
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "CallDriverMapViewController")
+                        self.present(controller, animated: true, completion: nil)
+
                     } else {
-                        print("Document does not exist")
+                       
+                        
                     }
-//                    if document != nil {
-////                        print("Document data: \(document.data())")
-//                        print("already exists")
-//
-//                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                        let controller = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
-//                        self.present(controller, animated: true, completion: nil)
-//
-//                    } else {
-//                        print("Document does not exist")
-//                        print("insert data:::::")
-//                        let currentUser = Auth.auth().currentUser?.uid
-//
-//                        var ref: DocumentReference? = nil
-//                        ref = self.db.collection("Users").addDocument(data: [
-//                            "phoneNumber"   : user?.phoneNumber as Any
-//
-//                        ]) { err in
-//                            if let err = err {
-//
-//                                print("Error adding document: \(err)")
-//
-//                            } else {
-//
-//                                print("Document added with ID: \(ref!.documentID)")
-//                                let storyboard  = UIStoryboard(name: "Login", bundle: nil)
-//                                let vc          = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
-//                                self.navigationController?.pushViewController(vc, animated: true)
-//
-//                            }
-//                        }
-//
-//                    }
+                
                 }
                 
-        
 
                 
-//                var ref: DocumentReference? = nil
-//                ref = self.db.collection("Users").addDocument(data: [
-//                                        "phoneNumber"   : user?.phoneNumber as Any
-//
-//                                    ]) { err in
-//                                        if let err = err {
-//
-//                                            print("Error adding document: \(err)")
-//
-//                                        } else {
-//
-//                                            print("Document added with ID: \(ref!.documentID)")
-//
-//                                        }
-//                                    }
-//
-//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                let controller = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
-//                self.present(controller, animated: true, completion: nil)
 
-//                self.hasUserSignedIn()
-                
             } else {
                 
                     
@@ -270,56 +238,6 @@ class otp: UIViewController {
 
     
         
-    
-    
-//
-    
-//    func hasUserSignedIn() {
-//
-//        authHandle = Auth.auth().addStateDidChangeListener { [unowned self] auth, user in
-//
-//            if user == nil {
-//
-//                print("insert data:::::")
-//                var ref: DocumentReference? = nil
-//
-//                ref = self.db.collection("Users").addDocument(data: [
-//                    "phoneNumber"   : user?.phoneNumber as Any
-//
-//                ]) { err in
-//                    if let err = err {
-//
-//                        print("Error adding document: \(err)")
-//
-//                    } else {
-//
-//                        print("Document added with ID: \(ref!.documentID)")
-//                        let storyboard  = UIStoryboard(name: "Login", bundle: nil)
-//                        let vc          = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
-//                        self.navigationController?.pushViewController(vc, animated: true)
-//
-//                    }
-//                }
-//
-//
-//            } else {
-//
-//                print("PoneNumber:::::: already phone number exist")
-//
-//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                let controller = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
-//                self.present(controller, animated: true, completion: nil)
-//
-//
-//            }
-//
-//        }
-//
-//    }
-    
 
-    
-
-   
 
 }//class

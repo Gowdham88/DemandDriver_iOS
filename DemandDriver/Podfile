@@ -13,7 +13,7 @@ target 'DemandDriver' do
   pod 'Firebase/Messaging'
   pod 'FirebaseUI/Auth'
   pod 'FirebaseUI/Phone'
-  pod 'IQKeyboardManagerSwift', '5.0.0'
+  
   
   
   
