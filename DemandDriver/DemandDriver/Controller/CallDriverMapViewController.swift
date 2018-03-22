@@ -59,7 +59,7 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
        
         newPin.coordinate = location.coordinate
         mkmapView.addAnnotation(newPin)
-        
+    
 
         
         db.collection("Users").document(currentUser!).updateData([
@@ -72,8 +72,37 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
                     print("Document successfully updated")
                 }
         }
-        
     }
+//    func updateLocationoordinates(coordinates:CLLocationCoordinate2D) {
+//        if destinationMarker == nil
+//        {
+//            destinationMarker = GMSMarker()
+//            destinationMarker.position = coordinates
+//            let image = UIImage(named:"destinationmarker")
+//            destinationMarker.icon = image
+//            destinationMarker.map = viewMap
+//            destinationMarker.appearAnimation = kGMSMarkerAnimationPop
+//        }
+//        else
+//        {
+//            CATransaction.begin()
+//            CATransaction.setAnimationDuration(1.0)
+//            destinationMarker.position =  coordinates
+//            CATransaction.commit()
+//        }
+//    }
+//    
+//    // Camera change Position this methods will call every time
+//    func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
+//        let destinationLocation = CLLocation()
+//        if self.mapGesture == true
+//        {
+//            destinationLocation = CLLocation(latitude: position.target.latitude,  longitude: position.target.longitude)
+//            destinationCoordinate = destinationLocation.coordinate
+//            updateLocationoordinates(destinationCoordinate)
+//        }
+//    }
+    
     
     
     

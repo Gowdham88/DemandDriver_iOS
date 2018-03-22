@@ -25,7 +25,9 @@ class NewLoginViewController: UIViewController {
     @IBOutlet var phoneNumber: UITextField!
     @IBOutlet weak var countryTextField: UITextField!
    
-   
+    @IBOutlet weak var countryView: UIView!
+    @IBOutlet weak var mobileView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,16 @@ class NewLoginViewController: UIViewController {
 //          CountryPicker.showPhoneNumbers = true
          // CountryPicker.setCountry("Ind")
          // CountryPicker.setCountryByName("India")
+        let shadowpath2 = UIBezierPath(roundedRect: self.mobileView.bounds, byRoundingCorners: [.topRight, .bottomRight], cornerRadii: CGSize(width: 58.0, height: 0.0))
+        
+        mobileView.layer.shadowColor = UIColor(red: 12/255.0, green: 189/255.0, blue: 239/255.0, alpha: 0.5).cgColor
+        mobileView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        mobileView.layer.shadowOpacity = 0.5
+        mobileView.layer.shadowRadius = 10 //Here your control your blur
+        mobileView.layer.shadowPath = shadowpath2.cgPath
+        mobileView.layer.masksToBounds =  false
+        mobileView.layer.cornerRadius = mobileView.frame.size.height/2
+        mobileView.clipsToBounds = true
         
         countryTextField.text = "+91"
 //        registerForKeyboardNotifications()
