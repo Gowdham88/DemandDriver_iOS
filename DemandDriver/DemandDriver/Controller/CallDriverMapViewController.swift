@@ -54,36 +54,25 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
         let long = location.coordinate.longitude
         let center = CLLocationCoordinate2D(latitude: lat, longitude: long)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.10, longitudeDelta: 0.10))
-//        print("CurrentLocation of Lat:::: \(lat)")
-//        print("CurrentLocation of Long:::: \(long)")
+
         mkmapView.setRegion(region, animated: true)
        
         newPin.coordinate = location.coordinate
         mkmapView.addAnnotation(newPin)
         
-//       Database.database().reference().child("Location").child(Auth.auth().currentUser!.uid).setValue(["latitude": lat, "longitude": long])
-        
-//        let docRef =  self.db.collection("Users").document(currentUser!)
 
         
-//        let currentUser = Auth.auth().currentUser?.uid
-//        print("currentUser:::\(String(describing: currentUser))")
-//    }
-
-//        db.collection("Users").document().updateData([
-//            
-//            "Lat": lat,
-//            "Long": long  
-//            
-//        ]) { if let err = err {
-//                print("Error writing document: \(err)")
-//            } else {
-//                print("Document successfully written!")
-//            }
-//        
-//        }
-//      
-//        
+        db.collection("Users").document(currentUser!).updateData([
+            "lat": lat,
+            "long": long
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+        }
+        
     }
     
     
