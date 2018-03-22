@@ -13,6 +13,7 @@ import FirebaseAuthUI
 import FirebaseFirestore
 import FirebasePhoneAuthUI
 
+public let currentUser = Auth.auth().currentUser?.uid
 
 
 class otp: UIViewController {
@@ -175,7 +176,6 @@ class otp: UIViewController {
                 let userInfo = user?.providerData[0]
                 print("Provider ID: \(String(describing: userInfo?.providerID))")
                 
-                let currentUser = Auth.auth().currentUser?.uid
                 var ref: DocumentReference? = nil
 
                 let docRef =  self.db.collection("Users").document(currentUser!)
