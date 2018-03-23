@@ -178,59 +178,32 @@ class otp: UIViewController {
                 
                 var ref: DocumentReference? = nil
 
-                let docRef =  self.db.collection("Users").document(currentUser!)
                 print("currentUser:::\(String(describing: currentUser))")
-                print("docRef:::\(String(describing: docRef))")
                 
-                
-
-                
-                
-                docRef.getDocument { (documents, error) in
-
-                    if let document = documents {
-//                        print("Document data: \(document)")
-                        print("new user created")
-                        var ref: DocumentReference? = nil
-                        
-                        self.db.collection("Users").document(currentUser!).setData([
-                            "phoneNumber": user?.phoneNumber as Any,
-                            "UID": currentUser as Any
-                            
-                        ]) { err in
-                            if let err = err {
-                                print("Error writing document: \(err)")
-                            } else {
-                                print("Document successfully written!")
-                            }
-                        }
-
-                        
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let controller = storyboard.instantiateViewController(withIdentifier: "CallDriverMapViewController")
-                        self.present(controller, animated: true, completion: nil)
-
+                self.db.collection("Users").document(currentUser!).setData([
+                    "phoneNumber": user?.phoneNumber as Any,
+                    "UID": currentUser as Any
+                    
+                ]) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
                     } else {
-                       
-                        
+                        print("Document successfully written!")
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+                        self.present(controller, animated: true, completion: nil)
                     }
-                
                 }
-                
-
-                
-
+            
+    
             } else {
                 
-                    
+                print("error::::::")
                     
                     
                 }
 
 
-                
-                
-                
                 
             }
             
