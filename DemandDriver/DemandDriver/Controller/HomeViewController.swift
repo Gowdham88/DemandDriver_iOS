@@ -81,7 +81,9 @@ class HomeViewController: UIViewController {
     @objc func imageTapped (tapGestureRecognizer: UITapGestureRecognizer) {
         let storyboard  = UIStoryboard(name: "Main", bundle: nil)
         let vc          = storyboard.instantiateViewController(withIdentifier: "CallDriverMapViewController") as! CallDriverMapViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+       // self.navigationController?.pushViewController(vc, animated: true)
+        self.present(vc, animated: true, completion: nil)
+        
     }
     
     @IBAction func logutBtn(_ sender: Any) {
