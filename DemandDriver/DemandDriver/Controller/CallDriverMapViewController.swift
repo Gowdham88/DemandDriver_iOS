@@ -14,12 +14,48 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseFirestore
 
+
+
 //import GoogleMaps
 
-class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate,UIGestureRecognizerDelegate{
+class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate,UIGestureRecognizerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
+    
+    
+   
 
-//    @IBOutlet weak var mapview: GMSMapView!
-   var ref: DocumentReference? = nil
+    let datepicker = UIDatePicker()
+    var pickerview = UIPickerView()
+    let pickerdata  =  ["Hourly","Outstation","Valet Parking"];
+    var pickerview1 = UIPickerView()
+    let pickerdata1  =  [" STAR","STAR AUTOMATIC","ACCENT","ACCENT AUTOMATIC","ACCORD","ALTO","ALTO 800","ALTO K10","ALTO K10 AUTOMATIC","AMBASSADOR","AUDI","AUDI AUTOMATIC","BMW","BMW AUTOMATIC","BALENO","BENZ AUTOMATIC","BOLERO","CRV","CRV AUTOMATIC","CAMRY","CAMRY AUTOMATIC","CHEVROLET AVEO","CHEVROLET BEAT","CHEVROLET CAPTIVA","CHEVROLET CAPTIVA AUTOMATIC","CHEVROLET CRUZE","CHEVROLET CRUZE AUTOMATIC","CHEVROLET ENJOY","CHEVROLET OPTRA","CHEVROLET SAIL","CHEVROLET SAIL SEDAN","CHEVROLET SPARK","CHEVROLET TRAILBLAZER","CHEVROLET UVA","CIVIC","CIVIC AUTOMATIC","COROLA","COROLA AUTOMATIC","DAEWOOD CIELO","DUSTER","ELANTRA","ELANTRA AUTOMATIC","ENDEOVAR","ERTIGA","FERRARI","FIAT AVVENTURA","FIAT LINEA","FIAT PALIO","FIAT PUNTO","FIAT SIENNA","FIAT UNO","FORCE ONE SUV","FORD CLASSIC","FORD ECO SPORT","FORD ECO SPORT AUTOMATIC","FORD ESCORT","FORD FIESTA","FORD FIGO","FORD FIGO ASPIRE","FORD FUSION","FORD IKON","FORD MONDEO","FORTUNER","FORTUNER AUTOMATIC","GETZ","GRAND VITARA","HONDA AMAZE","HONDA AMAZE AUTOMATIC","HONDA BRIO","HONDA BRIO AUTOMATIC","HONDA CITY","HONDA CITY AUTOMATIC","HONDA JAZZ","HONDA JAZZ AUTOMATIC","HONDA MOBILIO","HUMMER","HYUNDAI CRETA","HYUNDAI EON","HYUNDAI EON SPORT","HYUNDAI SANTA FE","HYUNDAI SANTA FE AUTOMATIC","HYUNDAI TUCSON","HYUNDAI XCENT","HYUNDAI XCENT AUTOMATIC","HYUNDAI GRAND I10","I10","I10 AUTOMATIC","I10 AUTOMATIC","I10 GRAND","I20","I20 AUTOMATIC","INDICA","INDICA VISTA","INDIGO","INDIGO CS","INDIGO GLX","INDIGO MANZA","INDIGO MARINA","INNOVA","ISUZU MU7","JAGUAR","JAGUAR AUTOMATIC","JEEP","LAMBORGHINI","LANCER","LAND ROVER","LANDCRUSIER","LEXUS","LOGAN","LORRY","MAHINDRA E20","MAHINDRA QUANTO","MAHINDRA REXCENT","MAHINDRA VERITO","MARUTI 1000","MARUTI 800","MARUTI CELERIO","MARUTI CELERIO","MARUTI CELERIO AUTOMATIC","MARUTI CIAZ","MARUTI ECHO","MARUTI ESTEEM","MARUTI XCROSS","MATIZ","MERCEDES BENZ","MINI COOPER","NANO, NISSAN DATSUN GO","NISSAN MICRA","NISSAN MICRA AUTOMATIC","NISSAN SUNNY","NISSAN TERRANO","NISSAN TIANA AUTOMATIC","NISSAN XTRAIL","NISSAN XTRAIL AUTOMATIC","OMNI VAN","OPEL ASTRA","OPEL CORSA","OUT LAND","PAJERO","PALIO","PRADA","QUALIS","RANGE ROVER","REBOOKING","RENAULT DUSTER","RENAULT KOLEOS","RENAULT KWID","RENAULT LODGY","RENAULT PULSE","RENAULT SCALA","RITZ","RITZ AUTOMATIC","ROLLS ROYCE","SANTRO","SANTRO AUTOMATIC","SANTRO XING","SANTRO XING AUTOMATIC","SCORPIO","SKODA","SKODA CITIGO","SKODA LAURA","SKODA LAURA AUTOMATIC","SKODA OCTAVIA","SKODA OCTAVIA AUTOMATIC","SKODA RAPID","SKODA RAPID AUTOMATIC","SKODA SUPERB","SKODA SUPERB AUTOMATIC","SKODA YETI","SKODA YETI AUTOMATIC","SONATA","SONATA AUTOMATIC","SWIFT","SWIFT DZIRE","SWIFT DZIRE AUTOMATIC","SX 4","TATA ARIA","TATA BOLT","TATA DICOR","TATA MAGIC","TATA NANO","TATA SAFARI","TATA STORM","TATA SUMO","TATA VENTURE","TATA WINGER","TATA XENON","TATA ZETZ","TATA ZETZ AUTOMATIC","TAVERA","TEMPO TRAVELLAR","TERRACON","TOYOTA ALTIS","TOYOTA ALTIS AUTOMATIC","TOYOTA ETIOS","TOYOTA ETIOS LIVA","TOYOTA PRIUS","TOYOTA VOVLO","TOYOTA XLUSIVE","TOYOTA YARIS","VALET PARKING","VERNA","VERNA AUTOMATIC","VERNA FLUDIC","VERSA","VOLKSWAGEN BEETLE","VOLKSWAGEN JETTA","VOLKSWAGEN JETTA AUTOMATIC","VOLKSWAGEN PASSAT","VOLKSWAGEN PASSAT AUTOMATIC","VOLKSWAGEN POLO","VOLKSWAGEN POLO AUTOMATIC","VOLKSWAGEN VENTO","VOLKSWAGEN VENTO AUTOMATIC","WAGON R","WAGON R AUTOMATIC","XUV 500","XYLO","ZEN ESTILO","ZEN MARUTI"];
+
+  
+    
+    @IBOutlet weak var bookLaterTextField: UITextField!
+    @IBOutlet weak var carModalTextView: UITextView!
+    
+    @IBOutlet weak var hourdropdown: UIButton!
+    @IBOutlet weak var hourTextView: UITextView!
+    @IBAction func hourdropdown(_ sender: Any) {
+        pickerview = UIPickerView(frame:CGRect(x: 8, y: 8, width: self.hourTextView.frame.size.width, height: 200))
+        pickerview.delegate = self
+        pickerview.dataSource = self
+        pickerview.tag = 1
+        hourTextView.inputView = pickerview
+       
+    }
+    @IBAction func carModalButton(_ sender: Any) {
+        pickerview1 = UIPickerView(frame:CGRect(x: 8, y: 8, width: self.carModalTextView.frame.size.width, height: 200))
+        pickerview1.delegate = self
+        pickerview1.dataSource = self
+        pickerview1.tag = 2
+        carModalTextView.inputView = pickerview1
+    }
+    //    @IBOutlet weak var mapview: GMSMapView!
+    
+   
+   
+    var ref: DocumentReference? = nil
     let db = Firestore.firestore()
     var currentlat = Double()
     var currentlong = Double()
@@ -43,6 +79,11 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
         LocationManager.desiredAccuracy = kCLLocationAccuracyBest
         LocationManager.requestWhenInUseAuthorization()
         LocationManager.startUpdatingLocation()
+        
+        
+        
+       
+        
 //        let tgr = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureHandler))
 //        tgr.delegate = self
 //        mkmapView.addGestureRecognizer(tgr)
@@ -100,7 +141,71 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
 //        }
 //    }
     }
-  
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == self.pickerview {
+            return pickerdata.count
+        } else if pickerView == self.pickerview1{
+            return pickerdata1.count
+        }
+        return 1
+    }
+        
+    
+    func pickerview( _ : UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        if pickerview.tag == 1 {
+            return pickerdata[row]
+        } else if pickerview1.tag == 2{
+            return pickerdata1[row]
+        }
+        return ""
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerview.tag == 1 {
+            hourTextView.text = pickerdata[row]
+        } else if pickerview1.tag == 2{
+          carModalTextView.text = pickerdata1[row]
+        }
+        
+        self.view.endEditing(true)
+    }
+    //date picker
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
+        showDatePicker()
+        return true
+    }
+    func showDatePicker(){
+        //Formate Date
+        datepicker.datePickerMode = .date
+
+        //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+
+        //done button & cancel button
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        bookLaterTextField.inputAccessoryView = toolbar
+        bookLaterTextField.inputView = datepicker
+
+    }
+    @objc func donedatePicker(){
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        bookLaterTextField.text = formatter.string(from: datepicker.date)
+        self.view.endEditing(true)
+    }
+
+    @objc func cancelDatePicker(){
+        self.view.endEditing(true)
+    }
    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last! as CLLocation
@@ -169,8 +274,7 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
     @IBAction func bookNowButton(_ sender: Any) {
       
         
-            db.collection("Users").document(currentUser!)
-            .collection("Current Booking").document(currentUser!).setData([
+            db.collection("UsersBookingRequest").document(currentUser!).setData([
                 "Currentlat": currentlat,
                 "Currentlong": currentlong,
                 "Desinationlat": lat2,
