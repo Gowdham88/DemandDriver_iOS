@@ -30,7 +30,6 @@
 		6FB6EDB9205A4323008F7D48 /* CurrentBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6EDB8205A4323008F7D48 /* CurrentBookingViewController.swift */; };
 		6FB6EDBB205A434C008F7D48 /* CurrentBookingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6EDBA205A434C008F7D48 /* CurrentBookingTableViewCell.swift */; };
 		6FEEF9132060D6A700FD966A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FEEF9122060D6A600FD966A /* MapKit.framework */; };
-		6FEEF9152060DAD900FD966A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FEEF9142060DAD900FD966A /* CoreLocation.framework */; };
 		6FF1D5AA202D661A00F38E61 /* Splash Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FF1D5A9202D661A00F38E61 /* Splash Screen.storyboard */; };
 		6FF1D5AE202D66EC00F38E61 /* SplashScreenControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1D5AD202D66EC00F38E61 /* SplashScreenControllerViewController.swift */; };
 		6FF1D5B0202D9BD300F38E61 /* otp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1D5AF202D9BD300F38E61 /* otp.swift */; };
@@ -92,6 +91,7 @@
 		6FB305F120624E550007E317 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB6EDB8205A4323008F7D48 /* CurrentBookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentBookingViewController.swift; sourceTree = "<group>"; };
 		6FB6EDBA205A434C008F7D48 /* CurrentBookingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentBookingTableViewCell.swift; sourceTree = "<group>"; };
+		6FCE7B512074E18700A26FE8 /* UIDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FEEF9122060D6A600FD966A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6FEEF9142060DAD900FD966A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6FF1D5A9202D661A00F38E61 /* Splash Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Splash Screen.storyboard"; sourceTree = "<group>"; };
@@ -110,7 +110,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FEEF9152060DAD900FD966A /* CoreLocation.framework in Frameworks */,
 				6FEEF9132060D6A700FD966A /* MapKit.framework in Frameworks */,
 				7C5E576AD4E4F93C0CAE2819 /* Pods_DemandDriver.framework in Frameworks */,
 			);
@@ -208,6 +207,7 @@
 		624234DE6A2FF15C0DC9F070 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6FCE7B512074E18700A26FE8 /* UIDropDown.framework */,
 				6FB305F120624E550007E317 /* IQKeyboardManagerSwift.framework */,
 				6FB305EF20623D810007E317 /* IQKeyboardManagerSwift.framework */,
 				6F1C017620623A4000634CBF /* IQKeyboardManagerSwift.framework */,
