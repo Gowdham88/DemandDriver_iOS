@@ -17,7 +17,15 @@ class TariffViewController: UIViewController,UITableViewDelegate,UITableViewData
     var costarray1 = [String]()
     var costarray2 = [String]()
     
-
+    @IBAction func backBarButton(_ sender: Any) {
+        let storyboard  = UIStoryboard(name: "Login", bundle: nil)
+        let vc          = storyboard.instantiateViewController(withIdentifier: "CallDriverMapViewController") as! CallDriverMapViewController
+        self.dismiss(animated: true, completion: nil)
+        //self.present(vc, animated: true, completion: nil)
+    }
+    
+    
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +36,7 @@ class TariffViewController: UIViewController,UITableViewDelegate,UITableViewData
         costarray = ["Rs. 650.00","Rs. 280.00","Rs. 300.00","Rs. 500.00"]
         costarray1 = ["Rs. 50.00","Rs. 50.00","Rs. 50.00","Rs. 50.00"]
         costarray2 = ["Rs. 0.00","Rs. 0.00","Rs. 0.00","Rs. 0.00"]
+        tableView.backgroundColor = UIColor.blue
         
 
         // Do any additional setup after loading the view.

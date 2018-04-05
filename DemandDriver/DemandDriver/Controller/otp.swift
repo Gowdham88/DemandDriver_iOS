@@ -180,7 +180,7 @@ class otp: UIViewController {
 
                 print("currentUser:::\(String(describing: currentUser))")
                 
-                self.db.collection("Users").document(currentUser!).setData([
+                self.db.collection("Userdetails").document(currentUser!).setData([
                     "phoneNumber": user?.phoneNumber as Any,
                     "UID": currentUser as Any
                     

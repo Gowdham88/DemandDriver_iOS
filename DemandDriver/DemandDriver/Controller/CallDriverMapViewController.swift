@@ -21,35 +21,45 @@ import FirebaseFirestore
 class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate,UIGestureRecognizerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
     
     
-   
-
+    var pickerdata1: [String] = [String]()
+    var pickerdata: [String] = [String]()
     let datepicker = UIDatePicker()
     var pickerview = UIPickerView()
-    let pickerdata  =  ["Hourly","Outstation","Valet Parking"];
+    
     var pickerview1 = UIPickerView()
-    let pickerdata1  =  [" STAR","STAR AUTOMATIC","ACCENT","ACCENT AUTOMATIC","ACCORD","ALTO","ALTO 800","ALTO K10","ALTO K10 AUTOMATIC","AMBASSADOR","AUDI","AUDI AUTOMATIC","BMW","BMW AUTOMATIC","BALENO","BENZ AUTOMATIC","BOLERO","CRV","CRV AUTOMATIC","CAMRY","CAMRY AUTOMATIC","CHEVROLET AVEO","CHEVROLET BEAT","CHEVROLET CAPTIVA","CHEVROLET CAPTIVA AUTOMATIC","CHEVROLET CRUZE","CHEVROLET CRUZE AUTOMATIC","CHEVROLET ENJOY","CHEVROLET OPTRA","CHEVROLET SAIL","CHEVROLET SAIL SEDAN","CHEVROLET SPARK","CHEVROLET TRAILBLAZER","CHEVROLET UVA","CIVIC","CIVIC AUTOMATIC","COROLA","COROLA AUTOMATIC","DAEWOOD CIELO","DUSTER","ELANTRA","ELANTRA AUTOMATIC","ENDEOVAR","ERTIGA","FERRARI","FIAT AVVENTURA","FIAT LINEA","FIAT PALIO","FIAT PUNTO","FIAT SIENNA","FIAT UNO","FORCE ONE SUV","FORD CLASSIC","FORD ECO SPORT","FORD ECO SPORT AUTOMATIC","FORD ESCORT","FORD FIESTA","FORD FIGO","FORD FIGO ASPIRE","FORD FUSION","FORD IKON","FORD MONDEO","FORTUNER","FORTUNER AUTOMATIC","GETZ","GRAND VITARA","HONDA AMAZE","HONDA AMAZE AUTOMATIC","HONDA BRIO","HONDA BRIO AUTOMATIC","HONDA CITY","HONDA CITY AUTOMATIC","HONDA JAZZ","HONDA JAZZ AUTOMATIC","HONDA MOBILIO","HUMMER","HYUNDAI CRETA","HYUNDAI EON","HYUNDAI EON SPORT","HYUNDAI SANTA FE","HYUNDAI SANTA FE AUTOMATIC","HYUNDAI TUCSON","HYUNDAI XCENT","HYUNDAI XCENT AUTOMATIC","HYUNDAI GRAND I10","I10","I10 AUTOMATIC","I10 AUTOMATIC","I10 GRAND","I20","I20 AUTOMATIC","INDICA","INDICA VISTA","INDIGO","INDIGO CS","INDIGO GLX","INDIGO MANZA","INDIGO MARINA","INNOVA","ISUZU MU7","JAGUAR","JAGUAR AUTOMATIC","JEEP","LAMBORGHINI","LANCER","LAND ROVER","LANDCRUSIER","LEXUS","LOGAN","LORRY","MAHINDRA E20","MAHINDRA QUANTO","MAHINDRA REXCENT","MAHINDRA VERITO","MARUTI 1000","MARUTI 800","MARUTI CELERIO","MARUTI CELERIO","MARUTI CELERIO AUTOMATIC","MARUTI CIAZ","MARUTI ECHO","MARUTI ESTEEM","MARUTI XCROSS","MATIZ","MERCEDES BENZ","MINI COOPER","NANO, NISSAN DATSUN GO","NISSAN MICRA","NISSAN MICRA AUTOMATIC","NISSAN SUNNY","NISSAN TERRANO","NISSAN TIANA AUTOMATIC","NISSAN XTRAIL","NISSAN XTRAIL AUTOMATIC","OMNI VAN","OPEL ASTRA","OPEL CORSA","OUT LAND","PAJERO","PALIO","PRADA","QUALIS","RANGE ROVER","REBOOKING","RENAULT DUSTER","RENAULT KOLEOS","RENAULT KWID","RENAULT LODGY","RENAULT PULSE","RENAULT SCALA","RITZ","RITZ AUTOMATIC","ROLLS ROYCE","SANTRO","SANTRO AUTOMATIC","SANTRO XING","SANTRO XING AUTOMATIC","SCORPIO","SKODA","SKODA CITIGO","SKODA LAURA","SKODA LAURA AUTOMATIC","SKODA OCTAVIA","SKODA OCTAVIA AUTOMATIC","SKODA RAPID","SKODA RAPID AUTOMATIC","SKODA SUPERB","SKODA SUPERB AUTOMATIC","SKODA YETI","SKODA YETI AUTOMATIC","SONATA","SONATA AUTOMATIC","SWIFT","SWIFT DZIRE","SWIFT DZIRE AUTOMATIC","SX 4","TATA ARIA","TATA BOLT","TATA DICOR","TATA MAGIC","TATA NANO","TATA SAFARI","TATA STORM","TATA SUMO","TATA VENTURE","TATA WINGER","TATA XENON","TATA ZETZ","TATA ZETZ AUTOMATIC","TAVERA","TEMPO TRAVELLAR","TERRACON","TOYOTA ALTIS","TOYOTA ALTIS AUTOMATIC","TOYOTA ETIOS","TOYOTA ETIOS LIVA","TOYOTA PRIUS","TOYOTA VOVLO","TOYOTA XLUSIVE","TOYOTA YARIS","VALET PARKING","VERNA","VERNA AUTOMATIC","VERNA FLUDIC","VERSA","VOLKSWAGEN BEETLE","VOLKSWAGEN JETTA","VOLKSWAGEN JETTA AUTOMATIC","VOLKSWAGEN PASSAT","VOLKSWAGEN PASSAT AUTOMATIC","VOLKSWAGEN POLO","VOLKSWAGEN POLO AUTOMATIC","VOLKSWAGEN VENTO","VOLKSWAGEN VENTO AUTOMATIC","WAGON R","WAGON R AUTOMATIC","XUV 500","XYLO","ZEN ESTILO","ZEN MARUTI"];
+ 
 
-  
+    @IBOutlet weak var driverModalTextField: UITextField!
+    @IBOutlet weak var carModalTextField: UITextField!
+    
     
     @IBOutlet weak var bookLaterTextField: UITextField!
-    @IBOutlet weak var carModalTextView: UITextView!
+   
     
+    @IBAction func tariffButton(_ sender: Any) {
+        let storyboard  = UIStoryboard(name: "Login", bundle: nil)
+        let vc          = storyboard.instantiateViewController(withIdentifier: "TariffViewController") as! TariffViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+        //self.present(vc, animated: true, completion: nil)
+    }
     @IBOutlet weak var hourdropdown: UIButton!
-    @IBOutlet weak var hourTextView: UITextView!
     @IBAction func hourdropdown(_ sender: Any) {
-        pickerview = UIPickerView(frame:CGRect(x: 8, y: 8, width: self.hourTextView.frame.size.width, height: 200))
+        pickerview = UIPickerView(frame:CGRect(x: 8, y: 8, width: self.view.frame.size.width, height: 200))
         pickerview.delegate = self
         pickerview.dataSource = self
+        pickerdata  =  ["Hourly","Outstation","Valet Parking"]
         pickerview.tag = 1
-        hourTextView.inputView = pickerview
+        driverModalTextField.inputView = pickerview
        
     }
     @IBAction func carModalButton(_ sender: Any) {
-        pickerview1 = UIPickerView(frame:CGRect(x: 8, y: 8, width: self.carModalTextView.frame.size.width, height: 200))
+        pickerview1 = UIPickerView(frame:CGRect(x: 8, y: 8, width: self.view.frame.size.width, height: 200))
         pickerview1.delegate = self
         pickerview1.dataSource = self
+        pickerdata1  =  [" STAR","STAR AUTOMATIC","ACCENT","ACCENT AUTOMATIC","ACCORD","ALTO","ALTO 800","ALTO K10","ALTO K10 AUTOMATIC","AMBASSADOR","AUDI","AUDI AUTOMATIC","BMW","BMW AUTOMATIC","BALENO","BENZ AUTOMATIC","BOLERO","CRV","CRV AUTOMATIC","CAMRY","CAMRY AUTOMATIC","CHEVROLET AVEO","CHEVROLET BEAT","CHEVROLET CAPTIVA","CHEVROLET CAPTIVA AUTOMATIC","CHEVROLET CRUZE","CHEVROLET CRUZE AUTOMATIC","CHEVROLET ENJOY","CHEVROLET OPTRA","CHEVROLET SAIL","CHEVROLET SAIL SEDAN","CHEVROLET SPARK","CHEVROLET TRAILBLAZER","CHEVROLET UVA","CIVIC","CIVIC AUTOMATIC","COROLA","COROLA AUTOMATIC","DAEWOOD CIELO","DUSTER","ELANTRA","ELANTRA AUTOMATIC","ENDEOVAR","ERTIGA","FERRARI","FIAT AVVENTURA","FIAT LINEA","FIAT PALIO","FIAT PUNTO","FIAT SIENNA","FIAT UNO","FORCE ONE SUV","FORD CLASSIC","FORD ECO SPORT","FORD ECO SPORT AUTOMATIC","FORD ESCORT","FORD FIESTA","FORD FIGO","FORD FIGO ASPIRE","FORD FUSION","FORD IKON","FORD MONDEO","FORTUNER","FORTUNER AUTOMATIC","GETZ","GRAND VITARA","HONDA AMAZE","HONDA AMAZE AUTOMATIC","HONDA BRIO","HONDA BRIO AUTOMATIC","HONDA CITY","HONDA CITY AUTOMATIC","HONDA JAZZ","HONDA JAZZ AUTOMATIC","HONDA MOBILIO","HUMMER","HYUNDAI CRETA","HYUNDAI EON","HYUNDAI EON SPORT","HYUNDAI SANTA FE","HYUNDAI SANTA FE AUTOMATIC","HYUNDAI TUCSON","HYUNDAI XCENT","HYUNDAI XCENT AUTOMATIC","HYUNDAI GRAND I10","I10","I10 AUTOMATIC","I10 AUTOMATIC","I10 GRAND","I20","I20 AUTOMATIC","INDICA","INDICA VISTA","INDIGO","INDIGO CS","INDIGO GLX","INDIGO MANZA","INDIGO MARINA","INNOVA","ISUZU MU7","JAGUAR","JAGUAR AUTOMATIC","JEEP","LAMBORGHINI","LANCER","LAND ROVER","LANDCRUSIER","LEXUS","LOGAN","LORRY","MAHINDRA E20","MAHINDRA QUANTO","MAHINDRA REXCENT","MAHINDRA VERITO","MARUTI 1000","MARUTI 800","MARUTI CELERIO","MARUTI CELERIO","MARUTI CELERIO AUTOMATIC","MARUTI CIAZ","MARUTI ECHO","MARUTI ESTEEM","MARUTI XCROSS","MATIZ","MERCEDES BENZ","MINI COOPER","NANO, NISSAN DATSUN GO","NISSAN MICRA","NISSAN MICRA AUTOMATIC","NISSAN SUNNY","NISSAN TERRANO","NISSAN TIANA AUTOMATIC","NISSAN XTRAIL","NISSAN XTRAIL AUTOMATIC","OMNI VAN","OPEL ASTRA","OPEL CORSA","OUT LAND","PAJERO","PALIO","PRADA","QUALIS","RANGE ROVER","REBOOKING","RENAULT DUSTER","RENAULT KOLEOS","RENAULT KWID","RENAULT LODGY","RENAULT PULSE","RENAULT SCALA","RITZ","RITZ AUTOMATIC","ROLLS ROYCE","SANTRO","SANTRO AUTOMATIC","SANTRO XING","SANTRO XING AUTOMATIC","SCORPIO","SKODA","SKODA CITIGO","SKODA LAURA","SKODA LAURA AUTOMATIC","SKODA OCTAVIA","SKODA OCTAVIA AUTOMATIC","SKODA RAPID","SKODA RAPID AUTOMATIC","SKODA SUPERB","SKODA SUPERB AUTOMATIC","SKODA YETI","SKODA YETI AUTOMATIC","SONATA","SONATA AUTOMATIC","SWIFT","SWIFT DZIRE","SWIFT DZIRE AUTOMATIC","SX 4","TATA ARIA","TATA BOLT","TATA DICOR","TATA MAGIC","TATA NANO","TATA SAFARI","TATA STORM","TATA SUMO","TATA VENTURE","TATA WINGER","TATA XENON","TATA ZETZ","TATA ZETZ AUTOMATIC","TAVERA","TEMPO TRAVELLAR","TERRACON","TOYOTA ALTIS","TOYOTA ALTIS AUTOMATIC","TOYOTA ETIOS","TOYOTA ETIOS LIVA","TOYOTA PRIUS","TOYOTA VOVLO","TOYOTA XLUSIVE","TOYOTA YARIS","VALET PARKING","VERNA","VERNA AUTOMATIC","VERNA FLUDIC","VERSA","VOLKSWAGEN BEETLE","VOLKSWAGEN JETTA","VOLKSWAGEN JETTA AUTOMATIC","VOLKSWAGEN PASSAT","VOLKSWAGEN PASSAT AUTOMATIC","VOLKSWAGEN POLO","VOLKSWAGEN POLO AUTOMATIC","VOLKSWAGEN VENTO","VOLKSWAGEN VENTO AUTOMATIC","WAGON R","WAGON R AUTOMATIC","XUV 500","XYLO","ZEN ESTILO","ZEN MARUTI"]
+        carModalTextField.inputView = pickerview1
         pickerview1.tag = 2
-        carModalTextView.inputView = pickerview1
+        
     }
     //    @IBOutlet weak var mapview: GMSMapView!
     
@@ -79,10 +89,12 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
         LocationManager.desiredAccuracy = kCLLocationAccuracyBest
         LocationManager.requestWhenInUseAuthorization()
         LocationManager.startUpdatingLocation()
-        
-        
-        
        
+        driverModalTextField.isUserInteractionEnabled = false
+        carModalTextField.isUserInteractionEnabled = false
+       
+        
+        
         
 //        let tgr = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureHandler))
 //        tgr.delegate = self
@@ -146,9 +158,9 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == self.pickerview {
+       if pickerview.tag == 1 {
             return pickerdata.count
-        } else if pickerView == self.pickerview1{
+        } else if pickerview1.tag == 2{
             return pickerdata1.count
         }
         return 1
@@ -165,9 +177,10 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerview.tag == 1 {
-            hourTextView.text = pickerdata[row]
+            
+        driverModalTextField.text = pickerdata[row]
         } else if pickerview1.tag == 2{
-          carModalTextView.text = pickerdata1[row]
+          carModalTextField.text = pickerdata1[row]
         }
         
         self.view.endEditing(true)
@@ -180,6 +193,7 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
     func showDatePicker(){
         //Formate Date
         datepicker.datePickerMode = .date
+        datepicker.date = Date()
 
         //ToolBar
         let toolbar = UIToolbar();
@@ -198,7 +212,7 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
     @objc func donedatePicker(){
 
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.dateFormat = "dd/MM/yyyy h:mm a"
         bookLaterTextField.text = formatter.string(from: datepicker.date)
         self.view.endEditing(true)
     }
@@ -244,7 +258,7 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
 //                }
 //        }
     }
-    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         // Remove all annotations
         self.mkmapView.removeAnnotations(mapView.annotations)
         //        let center = mapView.centerCoordinate
@@ -274,7 +288,7 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
     @IBAction func bookNowButton(_ sender: Any) {
       
         
-            db.collection("UsersBookingRequest").document(currentUser!).setData([
+            db.collection("Userdetails").document(currentUser!).setData([
                 "Currentlat": currentlat,
                 "Currentlong": currentlong,
                 "Desinationlat": lat2,
