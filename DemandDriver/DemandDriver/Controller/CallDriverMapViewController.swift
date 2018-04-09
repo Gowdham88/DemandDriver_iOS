@@ -84,6 +84,7 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
         mkmapView.showsUserLocation = true
         mkmapView.isZoomEnabled = true
         mkmapView.isScrollEnabled = true
+        mkmapView.delegate = self
         mkmapView.mapType = MKMapType.standard
         LocationManager.delegate = self
         LocationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -158,12 +159,12 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-       if pickerview.tag == 1 {
+    //   if pickerview.tag == 1 {
             return pickerdata.count
-        } else if pickerview1.tag == 2{
-            return pickerdata1.count
-        }
-        return 1
+//        } else if pickerview1.tag == 2{
+//            return pickerdata1.count
+//        }
+//       return 1
     }
         
     
@@ -179,8 +180,10 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
         if pickerview.tag == 1 {
             
         driverModalTextField.text = pickerdata[row]
+            pickerView.isHidden = true
         } else if pickerview1.tag == 2{
           carModalTextField.text = pickerdata1[row]
+            pickerview1.isHidden = true
         }
         
         self.view.endEditing(true)
@@ -258,6 +261,8 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
 //                }
 //        }
     }
+   
+
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         // Remove all annotations
         self.mkmapView.removeAnnotations(mapView.annotations)
