@@ -11,36 +11,31 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import UserNotifications
+import FirebaseAuthUI
+import FirebaseFirestore
+import FirebasePhoneAuthUI
 
+public let currentUser = Auth.auth().currentUser?.uid
 
-class NewLoginViewController: UIViewController {
+class NewLoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var phoneNumber: UITextField!
-    @IBOutlet weak var countryTextField: UITextField!
-    @IBOutlet weak var countryView: UIView!
-    @IBOutlet weak var mobileView: UIView!
+    @IBOutlet weak var enterCode: UITextField!
+    @IBOutlet weak var infoLabel: UILabel!
+    
+    var myverificationID = String()
+    
+   
+    var authHandle: AuthStateDidChangeListenerHandle!
+    var tapgesture = UITapGestureRecognizer()
+    var Userdefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//          CountryPicker.isHidden = true
-//          closeButton.isHidden = true
-//          CountryPicker.countryPickerDelegate = self
-//          CountryPicker.showPhoneNumbers = true
-         // CountryPicker.setCountry("Ind")
-         // CountryPicker.setCountryByName("India")
-        let shadowpath2 = UIBezierPath(roundedRect: self.mobileView.bounds, byRoundingCorners: [.topRight, .bottomRight], cornerRadii: CGSize(width: 58.0, height: 0.0))
-        
-//        mobileView.layer.shadowColor = UIColor(red: 12/255.0, green: 189/255.0, blue: 239/255.0, alpha: 0.5).cgColor
-//        mobileView.layer.shadowOffset = CGSize(width: 1, height: 1)
-//        mobileView.layer.shadowOpacity = 0.5
-//        mobileView.layer.shadowRadius = 10 //Here your control your blur
-//        mobileView.layer.shadowPath = shadowpath2.cgPath
-        mobileView.layer.masksToBounds =  false
-        mobileView.layer.cornerRadius = mobileView.frame.size.height/2
-        mobileView.clipsToBounds = true
+
         phoneNumber.textColor = UIColor.black
-        countryTextField.text = "+91"
-        
+        phoneNumber.text = ""
+        infoLabel.text = ""
 //        registerForKeyboardNotifications()
 //        deregisterFromKeyboardNotifications()
 
@@ -51,42 +46,156 @@ class NewLoginViewController: UIViewController {
     
     @IBAction func sendCode(_ sender: UIButton) {
         
-        let mobileNumber = countryTextField.text! + phoneNumber.text!
+        let mobileNumber = "+91" + phoneNumber.text!
+        
+        self.Userdefaults.set(mobileNumber, forKey: "mobileNumber")
         
         print("mobileNumber::::\(mobileNumber)")
         
-        let alert = UIAlertController(title: "Phone Number", message: "Is this your phone number? \n \(mobileNumber)", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Yes", style: .default)
-        {
-            (UIAlertAction) in PhoneAuthProvider.provider().verifyPhoneNumber(mobileNumber)
+        sendOTPCode()
+     
+    }
+    
+    func sendOTPCode() {
+        
+        let mymobilenumber = Userdefaults.string(forKey: "mobileNumber")
+        
+        PhoneAuthProvider.provider().verifyPhoneNumber(mymobilenumber!, uiDelegate: nil, completion:
             {
                 (verificationID, error) in
+                
+                self.Userdefaults.set(verificationID, forKey: "authVerificationID")
+                
                 if error != nil
                 {
                     print ("insde SendCode, there is error")
+                    
+                    self.infoLabel.text = "Please check the Number"
+                    
+                    self.enterCode.alpha = 0
                     
                     print("error: \(String(describing: error?.localizedDescription))")
                     
                 }
                 else
                 {
-                    print ("else  SendCode, going to move to next page")
-                    let defaults = UserDefaults.standard
-                    defaults.set(verificationID, forKey: "authVID")
-                    //self.performSegue(withIdentifier: "code", sender: Any?.self)
+                    print ("code sent")
                     
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "otp") as! otp
-                    vc.phonestring = mobileNumber
-                    self.present(vc, animated: true, completion: nil)
+                    self.infoLabel.text = ""
+                    self.phoneNumber.allowsEditingTextAttributes = false
+                    self.enterCode.alpha = 1
+                    
+                
                 }
-            }
-        }
-        let cancel = UIAlertAction(title: "No", style: .cancel, handler: nil)
-        alert.addAction(action)
-        alert.addAction(cancel)
-        self.present(alert, animated: true, completion: nil)
-
+        })
         
+    }
+    
+    @IBAction func resendOTP(_ sender: Any) {
+        
+        sendOTPCode()
+        
+    }
+    
+    func loginusingOTP(OTPtext: String) {
+         let db = Firestore.firestore()
+        let verificationID = self.Userdefaults.string(forKey: "authVerificationID")
+
+        let credential: PhoneAuthCredential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID!,
+                                                                                                    verificationCode: OTPtext)
+    Auth.auth().signIn(with: credential)
+    {
+    (user, error) in
+    if error != nil
+    {
+    print("error: \(String(describing: error?.localizedDescription))")
+    }
+    else if user != nil
+    {
+    
+    print("Phone number: \(String(describing: user?.phoneNumber))")
+    let userInfo = user?.providerData[0]
+    print("Provider ID: \(String(describing: userInfo?.providerID))")
+    
+        var _: DocumentReference? = nil
+    
+    print("currentUser:::\(String(describing: currentUser))")
+    
+    db.collection("Userdetails").document(currentUser!).setData([
+    "phoneNumber": user?.phoneNumber as Any,
+    "UID": currentUser as Any
+    
+    ]) { err in
+    if let err = err {
+    print("Error writing document: \(err)")
+    } else {
+    print("Document successfully written!")
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let controller = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+    self.present(controller, animated: true, completion: nil)
+    }
+    }
+    
+    } else {
+    
+    print("error::::::")
+    
+    }
+    
+    }
+    
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        let codestring = enterCode.text
+        
+        if codestring?.count == 6 {
+            
+            self.view.endEditing(true)
+            
+            loginusingOTP(OTPtext: codestring!)
+            
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        let codestring = enterCode.text
+        
+        if codestring?.count == 6 {
+            
+            self.view.endEditing(true)
+            
+            loginusingOTP(OTPtext: codestring!)
+            
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        let codestring = enterCode.text
+
+        if codestring?.count == 6 {
+            
+            textField.resignFirstResponder()
+            
+            loginusingOTP(OTPtext: codestring!)
+            
+            return true
+            
+        } else {
+            
+            print("Enter 6 digit code")
+            return true
+            
+        }
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+
+        self.view.endEditing(true)
         
     }
     override func didReceiveMemoryWarning() {
@@ -134,15 +243,8 @@ class NewLoginViewController: UIViewController {
 //        self.view.endEditing(true)
 //        self.scrollView.isScrollEnabled = false
 //    }
-    func textFieldDidBeginEditing(textField: UITextField!)
-    {
-        phoneNumber = textField
-    }
+   
     
-    func textFieldDidEndEditing(textField: UITextField!)
-    {
-        phoneNumber = nil
-    }
 
 
 //    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

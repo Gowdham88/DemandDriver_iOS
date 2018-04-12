@@ -69,7 +69,7 @@ class HomeViewController: UIViewController {
         nestedCenterRoundView.layer.shadowRadius = 10
         
          // gestures
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapG  estureRecognizer:)))
         view1.isUserInteractionEnabled = true
         view1.addGestureRecognizer(tapGestureRecognizer)
         
