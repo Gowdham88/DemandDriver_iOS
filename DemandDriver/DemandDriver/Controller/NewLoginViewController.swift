@@ -13,21 +13,12 @@ import FirebaseDatabase
 import UserNotifications
 
 
-
-
-
 class NewLoginViewController: UIViewController {
     
-
-    
-    
-
     @IBOutlet var phoneNumber: UITextField!
     @IBOutlet weak var countryTextField: UITextField!
-   
     @IBOutlet weak var countryView: UIView!
     @IBOutlet weak var mobileView: UIView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
