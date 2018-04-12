@@ -22,7 +22,7 @@
 		47A32D5C2029AD38008954EF /* DemandDriverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A32D5B2029AD38008954EF /* DemandDriverUITests.swift */; };
 		47B31767202D733F00293F54 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B31766202D733F00293F54 /* SignUpViewController.swift */; };
 		47E8C678202C146B001AC7E1 /* ViewExtender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E8C677202C146B001AC7E1 /* ViewExtender.swift */; };
-		5E43D030731951D479A9B0A1 /* Pods_DemandDriverUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61783C02A1DB0B8915552256 /* Pods_DemandDriverUITests.framework */; };
+		5A0AA313AEEB9C66689E8C2B /* Pods_DemandDriverTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C7BEB6B8CA2CA6B8E63D1B /* Pods_DemandDriverTests.framework */; };
 		6F1B359B205A81F7006538F4 /* PersonalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1B359A205A81F7006538F4 /* PersonalInformationViewController.swift */; };
 		6F1DD3AB2058E1D700A73659 /* TariffTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1DD3AA2058E1D700A73659 /* TariffTableViewCell.swift */; };
 		6F1DD3AD2058E1FA00A73659 /* TariffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1DD3AC2058E1FA00A73659 /* TariffViewController.swift */; };
@@ -33,8 +33,8 @@
 		6FF1D5AA202D661A00F38E61 /* Splash Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FF1D5A9202D661A00F38E61 /* Splash Screen.storyboard */; };
 		6FF1D5AE202D66EC00F38E61 /* SplashScreenControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1D5AD202D66EC00F38E61 /* SplashScreenControllerViewController.swift */; };
 		6FF1D5B0202D9BD300F38E61 /* otp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF1D5AF202D9BD300F38E61 /* otp.swift */; };
-		7C5E576AD4E4F93C0CAE2819 /* Pods_DemandDriver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F9C2CE1B37A74A20C446DF /* Pods_DemandDriver.framework */; };
-		B5A2480B50046C8E8814A5D0 /* Pods_DemandDriverTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE9A0F9D6ABEBDCDEBD24A7 /* Pods_DemandDriverTests.framework */; };
+		7C770DD829D972CE4121F20F /* Pods_DemandDriverUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0CF48D906A07A8CE0FF566 /* Pods_DemandDriverUITests.framework */; };
+		CC613B691717F755F2E4C2EB /* Pods_DemandDriver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 365770263AE22D441778676C /* Pods_DemandDriver.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +55,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		124D0FCAAB94717AFD92FACB /* Pods-DemandDriverTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemandDriverTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemandDriverTests/Pods-DemandDriverTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0F77F92B207F525C002BC291 /* GRPCClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GRPCClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F77F92D207F5268002BC291 /* grpc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = grpc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F77F930207F5331002BC291 /* RxLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F77F932207F5338002BC291 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F77F934207F533C002BC291 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F77F936207F5341002BC291 /* leveldb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = leveldb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F77F938207F5345002BC291 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F77F93A207F5349002BC291 /* openssl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = openssl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FCE79282D5F0FD7E3665059 /* Pods-DemandDriverTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemandDriverTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemandDriverTests/Pods-DemandDriverTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2B9B074787193EA78579E792 /* Pods-DemandDriverUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemandDriverUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemandDriverUITests/Pods-DemandDriverUITests.release.xcconfig"; sourceTree = "<group>"; };
+		365770263AE22D441778676C /* Pods_DemandDriver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemandDriver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FE0A3CE2056700E00C43579 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3FE0A3D020568E5600C43579 /* DemandDriver.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DemandDriver.entitlements; sourceTree = "<group>"; };
 		3FE0A3D120569B6B00C43579 /* NewLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLoginViewController.swift; sourceTree = "<group>"; };
@@ -78,8 +88,6 @@
 		47A32D5D2029AD38008954EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47B31766202D733F00293F54 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		47E8C677202C146B001AC7E1 /* ViewExtender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtender.swift; sourceTree = "<group>"; };
-		5DAAB1881583BA070B5BD074 /* Pods-DemandDriverUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemandDriverUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemandDriverUITests/Pods-DemandDriverUITests.release.xcconfig"; sourceTree = "<group>"; };
-		61783C02A1DB0B8915552256 /* Pods_DemandDriverUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemandDriverUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F1B359A205A81F7006538F4 /* PersonalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationViewController.swift; sourceTree = "<group>"; };
 		6F1C017620623A4000634CBF /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F1DD3AA2058E1D700A73659 /* TariffTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffTableViewCell.swift; sourceTree = "<group>"; };
@@ -97,12 +105,12 @@
 		6FF1D5A9202D661A00F38E61 /* Splash Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Splash Screen.storyboard"; sourceTree = "<group>"; };
 		6FF1D5AD202D66EC00F38E61 /* SplashScreenControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenControllerViewController.swift; sourceTree = "<group>"; };
 		6FF1D5AF202D9BD300F38E61 /* otp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otp.swift; sourceTree = "<group>"; };
-		A0F5FCDF186D7951B6718C12 /* Pods-DemandDriver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemandDriver.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemandDriver/Pods-DemandDriver.release.xcconfig"; sourceTree = "<group>"; };
-		BBA00DBC277B5A65B50F957F /* Pods-DemandDriverTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemandDriverTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemandDriverTests/Pods-DemandDriverTests.release.xcconfig"; sourceTree = "<group>"; };
-		CDE9A0F9D6ABEBDCDEBD24A7 /* Pods_DemandDriverTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemandDriverTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE856E2A7329077440419079 /* Pods-DemandDriver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemandDriver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemandDriver/Pods-DemandDriver.debug.xcconfig"; sourceTree = "<group>"; };
-		DBFA8AD5FA5A6A13F068170C /* Pods-DemandDriverUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemandDriverUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemandDriverUITests/Pods-DemandDriverUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		F9F9C2CE1B37A74A20C446DF /* Pods_DemandDriver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemandDriver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B0CF48D906A07A8CE0FF566 /* Pods_DemandDriverUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemandDriverUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2E773E1754820694212CB17 /* Pods-DemandDriver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemandDriver.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemandDriver/Pods-DemandDriver.release.xcconfig"; sourceTree = "<group>"; };
+		B7E15FC337E08B52801B3D9C /* Pods-DemandDriver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemandDriver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemandDriver/Pods-DemandDriver.debug.xcconfig"; sourceTree = "<group>"; };
+		DB66CFA44BE60E6D62E420C4 /* Pods-DemandDriverTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemandDriverTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemandDriverTests/Pods-DemandDriverTests.release.xcconfig"; sourceTree = "<group>"; };
+		E7C7BEB6B8CA2CA6B8E63D1B /* Pods_DemandDriverTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemandDriverTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3C4931E151BB631553915E0 /* Pods-DemandDriverUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemandDriverUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemandDriverUITests/Pods-DemandDriverUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FEEF9132060D6A700FD966A /* MapKit.framework in Frameworks */,
-				7C5E576AD4E4F93C0CAE2819 /* Pods_DemandDriver.framework in Frameworks */,
+				CC613B691717F755F2E4C2EB /* Pods_DemandDriver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,7 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5A2480B50046C8E8814A5D0 /* Pods_DemandDriverTests.framework in Frameworks */,
+				5A0AA313AEEB9C66689E8C2B /* Pods_DemandDriverTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,13 +135,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E43D030731951D479A9B0A1 /* Pods_DemandDriverUITests.framework in Frameworks */,
+				7C770DD829D972CE4121F20F /* Pods_DemandDriverUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		149E803EBD0425128245B5D4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B7E15FC337E08B52801B3D9C /* Pods-DemandDriver.debug.xcconfig */,
+				A2E773E1754820694212CB17 /* Pods-DemandDriver.release.xcconfig */,
+				0FCE79282D5F0FD7E3665059 /* Pods-DemandDriverTests.debug.xcconfig */,
+				DB66CFA44BE60E6D62E420C4 /* Pods-DemandDriverTests.release.xcconfig */,
+				F3C4931E151BB631553915E0 /* Pods-DemandDriverUITests.debug.xcconfig */,
+				2B9B074787193EA78579E792 /* Pods-DemandDriverUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		47A32D2C2029AD37008954EF = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +163,7 @@
 				47A32D5A2029AD38008954EF /* DemandDriverUITests */,
 				47A32D362029AD37008954EF /* Products */,
 				624234DE6A2FF15C0DC9F070 /* Frameworks */,
-				502674F2C81363F73C946C52 /* Pods */,
+				149E803EBD0425128245B5D4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -191,22 +212,17 @@
 			path = DemandDriverUITests;
 			sourceTree = "<group>";
 		};
-		502674F2C81363F73C946C52 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CE856E2A7329077440419079 /* Pods-DemandDriver.debug.xcconfig */,
-				A0F5FCDF186D7951B6718C12 /* Pods-DemandDriver.release.xcconfig */,
-				124D0FCAAB94717AFD92FACB /* Pods-DemandDriverTests.debug.xcconfig */,
-				BBA00DBC277B5A65B50F957F /* Pods-DemandDriverTests.release.xcconfig */,
-				DBFA8AD5FA5A6A13F068170C /* Pods-DemandDriverUITests.debug.xcconfig */,
-				5DAAB1881583BA070B5BD074 /* Pods-DemandDriverUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		624234DE6A2FF15C0DC9F070 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F77F93A207F5349002BC291 /* openssl.framework */,
+				0F77F938207F5345002BC291 /* nanopb.framework */,
+				0F77F936207F5341002BC291 /* leveldb.framework */,
+				0F77F934207F533C002BC291 /* GTMSessionFetcher.framework */,
+				0F77F932207F5338002BC291 /* GoogleToolboxForMac.framework */,
+				0F77F930207F5331002BC291 /* RxLibrary.framework */,
+				0F77F92D207F5268002BC291 /* grpc.framework */,
+				0F77F92B207F525C002BC291 /* GRPCClient.framework */,
 				6FCE7B512074E18700A26FE8 /* UIDropDown.framework */,
 				6FB305F120624E550007E317 /* IQKeyboardManagerSwift.framework */,
 				6FB305EF20623D810007E317 /* IQKeyboardManagerSwift.framework */,
@@ -215,9 +231,9 @@
 				6FEEF9122060D6A600FD966A /* MapKit.framework */,
 				6F1DD3B12059204000A73659 /* MRCountryPicker.framework */,
 				6F1DD3AF20591F1F00A73659 /* CountryPicker.framework */,
-				F9F9C2CE1B37A74A20C446DF /* Pods_DemandDriver.framework */,
-				CDE9A0F9D6ABEBDCDEBD24A7 /* Pods_DemandDriverTests.framework */,
-				61783C02A1DB0B8915552256 /* Pods_DemandDriverUITests.framework */,
+				365770263AE22D441778676C /* Pods_DemandDriver.framework */,
+				E7C7BEB6B8CA2CA6B8E63D1B /* Pods_DemandDriverTests.framework */,
+				9B0CF48D906A07A8CE0FF566 /* Pods_DemandDriverUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -267,12 +283,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 47A32D602029AD38008954EF /* Build configuration list for PBXNativeTarget "DemandDriver" */;
 			buildPhases = (
-				9639E858F291EBB3F20C1CB5 /* [CP] Check Pods Manifest.lock */,
+				61F6EA12F8667C1B3122CD30 /* [CP] Check Pods Manifest.lock */,
 				47A32D312029AD37008954EF /* Sources */,
 				47A32D322029AD37008954EF /* Frameworks */,
 				47A32D332029AD37008954EF /* Resources */,
-				627CE175ACCE8AAFAEFE976C /* [CP] Embed Pods Frameworks */,
-				1AA3A7FAB6FDB23C3738FEA4 /* [CP] Copy Pods Resources */,
+				5F416033C0FAC8DFDE598ABA /* [CP] Embed Pods Frameworks */,
+				5768364242B82615B703C06F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -287,7 +303,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 47A32D632029AD38008954EF /* Build configuration list for PBXNativeTarget "DemandDriverTests" */;
 			buildPhases = (
-				AF3D6309183EBB1F14CB6A25 /* [CP] Check Pods Manifest.lock */,
+				1839C17783680FFF34DAD598 /* [CP] Check Pods Manifest.lock */,
 				47A32D482029AD38008954EF /* Sources */,
 				47A32D492029AD38008954EF /* Frameworks */,
 				47A32D4A2029AD38008954EF /* Resources */,
@@ -306,7 +322,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 47A32D662029AD38008954EF /* Build configuration list for PBXNativeTarget "DemandDriverUITests" */;
 			buildPhases = (
-				03ED729CC25280BD029DDCB2 /* [CP] Check Pods Manifest.lock */,
+				DC483505D38E8BA5F449E4B6 /* [CP] Check Pods Manifest.lock */,
 				47A32D532029AD38008954EF /* Sources */,
 				47A32D542029AD38008954EF /* Frameworks */,
 				47A32D552029AD38008954EF /* Resources */,
@@ -406,7 +422,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		03ED729CC25280BD029DDCB2 /* [CP] Check Pods Manifest.lock */ = {
+		1839C17783680FFF34DAD598 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -417,16 +433,16 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DemandDriverUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-DemandDriverTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1AA3A7FAB6FDB23C3738FEA4 /* [CP] Copy Pods Resources */ = {
+		5768364242B82615B703C06F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
@@ -443,13 +459,14 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DemandDriver/Pods-DemandDriver-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-		627CE175ACCE8AAFAEFE976C /* [CP] Embed Pods Frameworks */ = {
+		5F416033C0FAC8DFDE598ABA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
@@ -478,11 +495,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DemandDriver/Pods-DemandDriver-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-		9639E858F291EBB3F20C1CB5 /* [CP] Check Pods Manifest.lock */ = {
+		61F6EA12F8667C1B3122CD30 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -500,7 +518,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AF3D6309183EBB1F14CB6A25 /* [CP] Check Pods Manifest.lock */ = {
+		DC483505D38E8BA5F449E4B6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -511,7 +529,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DemandDriverTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-DemandDriverUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -708,7 +726,7 @@
 		};
 		47A32D612029AD38008954EF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE856E2A7329077440419079 /* Pods-DemandDriver.debug.xcconfig */;
+			baseConfigurationReference = B7E15FC337E08B52801B3D9C /* Pods-DemandDriver.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DemandDriver/DemandDriver.entitlements;
@@ -726,7 +744,7 @@
 		};
 		47A32D622029AD38008954EF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0F5FCDF186D7951B6718C12 /* Pods-DemandDriver.release.xcconfig */;
+			baseConfigurationReference = A2E773E1754820694212CB17 /* Pods-DemandDriver.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DemandDriver/DemandDriver.entitlements;
@@ -744,7 +762,7 @@
 		};
 		47A32D642029AD38008954EF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 124D0FCAAB94717AFD92FACB /* Pods-DemandDriverTests.debug.xcconfig */;
+			baseConfigurationReference = 0FCE79282D5F0FD7E3665059 /* Pods-DemandDriverTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -762,7 +780,7 @@
 		};
 		47A32D652029AD38008954EF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BBA00DBC277B5A65B50F957F /* Pods-DemandDriverTests.release.xcconfig */;
+			baseConfigurationReference = DB66CFA44BE60E6D62E420C4 /* Pods-DemandDriverTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -780,7 +798,7 @@
 		};
 		47A32D672029AD38008954EF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DBFA8AD5FA5A6A13F068170C /* Pods-DemandDriverUITests.debug.xcconfig */;
+			baseConfigurationReference = F3C4931E151BB631553915E0 /* Pods-DemandDriverUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -797,7 +815,7 @@
 		};
 		47A32D682029AD38008954EF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5DAAB1881583BA070B5BD074 /* Pods-DemandDriverUITests.release.xcconfig */;
+			baseConfigurationReference = 2B9B074787193EA78579E792 /* Pods-DemandDriverUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
