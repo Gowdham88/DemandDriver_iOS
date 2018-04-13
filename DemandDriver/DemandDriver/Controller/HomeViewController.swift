@@ -19,12 +19,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var view2: UIImageView!
     @IBOutlet weak var view1: UIImageView!
     @IBOutlet weak var nestedCenterRoundView: UIView!
-    @IBOutlet weak var centerRoundedView: UIView!
+//    @IBOutlet weak var centerRoundedView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        centerRoundedView.layer.cornerRadius = centerRoundedView.frame.size.height/2
-        centerRoundedView.clipsToBounds      = true
+//        centerRoundedView.layer.cornerRadius = centerRoundedView.frame.size.height/2
+//        centerRoundedView.clipsToBounds      = true
         
         nestedCenterRoundView.layer.cornerRadius = nestedCenterRoundView.frame.size.height/2
         nestedCenterRoundView.clipsToBounds      = true
@@ -69,7 +69,7 @@ class HomeViewController: UIViewController {
         nestedCenterRoundView.layer.shadowRadius = 10
         
          // gestures
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapG  estureRecognizer:)))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         view1.isUserInteractionEnabled = true
         view1.addGestureRecognizer(tapGestureRecognizer)
         
