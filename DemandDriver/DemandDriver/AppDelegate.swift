@@ -16,25 +16,28 @@ import UserNotifications
 import MapKit
 import CoreLocation
 
-
-
- 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var database:DatabaseReference!
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        FirebaseApp.configure()
-     
-        
 
-       // GMSServices.provideAPIKey("AIzaSyB-SuyHSWWYfiRYJ49ph9ns8GGSSu9IQpQ")
-       
+        FirebaseApp.configure()
+
+//        try! Auth.auth().signOut()
+
+        if Auth.auth().currentUser != nil {
+
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = controller
+            self.window?.makeKeyAndVisible()
+        
+        }
+
         return true
     }
 
