@@ -97,6 +97,8 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
     let formatter = DateFormatter()
     
     var CurrentDate = UILabel()
+    let carModelSelected  = String()
+    let todayDate = String()
     
     @IBOutlet weak var mkmapView: MKMapView!
     @IBOutlet weak var navigationItemList: UINavigationItem!
@@ -126,8 +128,9 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
         numberPicker.tag = 2
         
         formatter.dateFormat = "dd.MM.yyyy"
-        let result = formatter.string(from: date)
+        var result = formatter.string(from: date)
         CurrentDate.text = result
+        result = todayDate
     }
 
     
@@ -279,8 +282,7 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
     
     func addressNames() {
         
-        let carModelSelected = carModalTextField
-        let todayDate = CurrentDate
+        
         let DocRef = self.db.collection("Current_booking").document(randomString)
         
         DocRef.setData([
@@ -288,7 +290,7 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
             "User_Lat": currentlat,
             "User_Long": currentlong,
 //            "Car_type" : carModelSelected as Any,
-//            "Date": todayDate,
+            "Date": todayDate,
             "User_ID": currentUser as Any
             
         ]) { err in
