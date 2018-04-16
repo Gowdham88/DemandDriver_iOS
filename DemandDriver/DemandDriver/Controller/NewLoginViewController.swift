@@ -121,9 +121,9 @@ class NewLoginViewController: UIViewController, UITextFieldDelegate {
     
     print("currentUser:::\(String(describing: currentUser))")
     
-    db.collection("Userdetails").document(currentUser!).setData([
-    "phoneNumber": user?.phoneNumber as Any,
-    "UID": currentUser as Any
+    db.collection("User_details").document(currentUser!).setData([
+    "User_Phone_number": user?.phoneNumber as Any,
+    "User_ID": currentUser as Any
     
     ]) { err in
     if let err = err {

@@ -18,21 +18,26 @@ import FirebaseFirestore
 
 //import GoogleMaps
 
-class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate,UIGestureRecognizerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
+class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate,UIGestureRecognizerDelegate {
     
     let geocoder = CLGeocoder()
     var locality = ""
     var administrativeArea = ""
+    var postalCode = ""
     var country = ""
 
     
-    var pickerdata1: [String] = [String]()
-    var pickerdata: [String] = [String]()
+//    var pickerdata1: [String] = [String]()
+//    var pickerdata: [String] = [String]()
     let datepicker = UIDatePicker()
-    var pickerview = UIPickerView()
+   
+//    var pickerview = UIPickerView()
+//    var pickerview1 = UIPickerView()
+//    var pickerdata  =  ["Hourly","Outstation","Valet Parking"]
+//    var pickerdata1  =  ["1","2"]
+
+
     
-    var pickerview1 = UIPickerView()
- 
 
     @IBOutlet weak var driverModalTextField: UITextField!
     @IBOutlet weak var carModalTextField: UITextField!
@@ -48,25 +53,32 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
         //self.present(vc, animated: true, completion: nil)
     }
     
-    @IBOutlet weak var hourdropdown: UIButton!
-    @IBAction func hourdropdown(_ sender: Any) {
-        pickerview = UIPickerView(frame:CGRect(x: 8, y: 8, width: self.view.frame.size.width, height: 200))
-        pickerview.delegate = self
-        pickerview.dataSource = self
-        pickerdata  =  ["Hourly","Outstation","Valet Parking"]
-        pickerview.tag = 1
-        driverModalTextField.inputView = pickerview
-       
-    }
-    @IBAction func carModalButton(_ sender: Any) {
-        pickerview1 = UIPickerView(frame:CGRect(x: 8, y: 8, width: self.view.frame.size.width, height: 200))
-        pickerview1.delegate = self
-        pickerview1.dataSource = self
-        pickerdata1  =  ["1","2"]
-        carModalTextField.inputView = pickerview1
-        pickerview1.tag = 2
-    }
-
+//    @IBOutlet weak var hourdropdown: UIButton!
+//    @IBAction func hourdropdown(_ sender: Any) {
+//        pickerview = UIPickerView(frame:CGRect(x: 8, y: 8, width: self.view.frame.size.width, height: 200))
+//        pickerview.delegate = self
+//        pickerview.dataSource = self
+//        pickerview.tag = 1
+//        driverModalTextField.inputView = pickerview
+//
+//    }
+//    @IBAction func carModalButton(_ sender: Any) {
+//        pickerview1 = UIPickerView(frame:CGRect(x: 8, y: 8, width: self.view.frame.size.width, height: 200))
+//        pickerview1.delegate = self
+//        pickerview1.dataSource = self
+//        carModalTextField.inputView = pickerview1
+//        pickerview1.tag = 2
+//    }
+    
+    let days = ["Hourly",
+                "Outstation",
+                "Valet Parking"]
+    let number = ["Automatic",
+                  "Sedan",
+                  "Hatchback",
+                  "SUV",
+                  "Luxury"
+                  ]
     
     var ref: DocumentReference? = nil
     let db = Firestore.firestore()
@@ -74,7 +86,17 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
     var currentlong = Double()
     var lat2 = Double()
     var long2 = Double()
+    var address = String()
+    var StreetName = String()
+    var randomString = String()
+    let dayPicker = UIPickerView()
+    let numberPicker = UIPickerView()
+    var selectedDay: String?
+    var selectNumber: String?
+    let date = Date()
+    let formatter = DateFormatter()
     
+    var CurrentDate = UILabel()
     
     @IBOutlet weak var mkmapView: MKMapView!
     @IBOutlet weak var navigationItemList: UINavigationItem!
@@ -94,44 +116,59 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
         LocationManager.requestWhenInUseAuthorization()
         LocationManager.startUpdatingLocation()
        
-        driverModalTextField.isUserInteractionEnabled = false
-        carModalTextField.isUserInteractionEnabled = false
+//        driverModalTextField.isUserInteractionEnabled = false
+//        carModalTextField.isUserInteractionEnabled = false
        
+        randomString(length: 8)
+        createDayPicker()
+        createToolbar()
+        dayPicker.tag = 1
+        numberPicker.tag = 2
+        
+        formatter.dateFormat = "dd.MM.yyyy"
+        let result = formatter.string(from: date)
+        CurrentDate.text = result
     }
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+
+    
+    func createDayPicker() {
+        
+        
+        dayPicker.delegate = self
+        numberPicker.delegate = self
+        
+        
+        driverModalTextField.inputView = dayPicker
+        carModalTextField.inputView = numberPicker
+        
+        //Customizations
+        //        dayPicker.backgroundColor = .grey
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    //   if pickerview.tag == 1 {
-            return pickerdata.count
-//        } else if pickerview1.tag == 2{
-//            return pickerdata1.count
-//        }
-//       return 1
-    }
-        
     
-    func pickerView( _ : UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerview.tag == 1 {
-            return pickerdata[row]
-        } else if pickerview1.tag == 2{
-            return pickerdata1[row]
-        }
-        return ""
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerview.tag == 1 {
-            
-        driverModalTextField.text = pickerdata[row]
-            pickerView.isHidden = true
-        } else if pickerview1.tag == 2{
-          carModalTextField.text = pickerdata1[row]
-            pickerview1.isHidden = true
-        }
+    func createToolbar() {
         
-        self.view.endEditing(true)
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        //Customizations
+        toolBar.barTintColor = .white
+        toolBar.tintColor = .blue
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(CallDriverMapViewController.dismissKeyboard))
+        
+        toolBar.setItems([doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        driverModalTextField.inputAccessoryView = toolBar
+        carModalTextField.inputAccessoryView = toolBar
     }
+    
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     //date picker
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
         showDatePicker()
@@ -172,6 +209,17 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
         let location = locations[0]
         manager.stopUpdatingLocation()
         
+//        let location = locations.last as CLLocation
+        
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04))
+        print("user latitude = \(location.coordinate.latitude)")
+        print("user longitude = \(location.coordinate.longitude)")
+        currentlat = location.coordinate.latitude
+        currentlong = location.coordinate.longitude
+       
+       
+
         geocoder.reverseGeocodeLocation(location, completionHandler: {(placemarks, error) in
             if (error != nil) {
                 print("Error in reverseGeocode")
@@ -180,13 +228,24 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
             let placemark = placemarks! as [CLPlacemark]
             if placemark.count > 0 {
                 let placemark = placemarks![0]
+//                self.StreetName = placemark.thoroughfare!
                 self.locality = placemark.locality!
                 self.administrativeArea = placemark.administrativeArea!
+                self.postalCode = placemark.postalCode!
                 self.country = placemark.country!
                 
-                print("locality, administrativeArea, country \(self.locality, self.administrativeArea, self.country)")
+//                print("locality, administrativeArea, country \(self.locality, self.administrativeArea, self.postalCode, self.country)")
+                self.address = self.locality + "," + " " + self.administrativeArea + "," + " " + self.postalCode + "," + " " + self.country
+                print("address:::\(self.address)")
+//                self.addressName()
+              
+                
+                
             }
         })
+        
+        self.mkmapView.setRegion(region, animated: true)
+//        self.addLatLong()
     }
     
     func userLocationString() -> String {
@@ -194,24 +253,97 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
         return userLocationString
     }
     
+    //User_details table
 
+    func addressName() {
+        let DocRef = self.db.collection("User_details").document(currentUser!)
+        
+        DocRef.updateData([
+            "User_Address": self.address,
+            "User_Lat": currentlat,
+            "User_Long": currentlong
+            
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+    }
+    
+
+    
+    //Current_booking table
+    
+    func addressNames() {
+        
+        let carModelSelected = carModalTextField
+        let todayDate = CurrentDate
+        let DocRef = self.db.collection("Current_booking").document(randomString)
+        
+        DocRef.setData([
+            "User_Address": self.address,
+            "User_Lat": currentlat,
+            "User_Long": currentlong,
+//            "Car_type" : carModelSelected as Any,
+//            "Date": todayDate,
+            "User_ID": currentUser as Any
+            
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+    }
+    func randomString(length: Int) -> String {
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
+        
+         randomString = "DD"+"-"+""
+        
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+            print("randomString:::::\(randomString)")
+        }
+        
+        return randomString
+    }
+
+ 
+    // User_current_booking table
+    
+    func bookingID() {
+        let DocRef = db.collection("User_current_booking").document(currentUser!)
+        
+        DocRef.setData([
+            "Booking_ID": randomString as Any
+            
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+        }
+        
+    }
+    
+    
     @IBAction func bookNowButton(_ sender: Any) {
       
-        
-            db.collection("Userdetails").document(currentUser!).setData([
-                "Currentlat": currentlat,
-                "Currentlong": currentlong,
-                "Desinationlat": lat2,
-                "Desinationlong": long2,
-                "UID" : currentUser as Any])
-        { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
-            }
+        self.addressName()
 
-        }
+        self.addressNames()
+        self.bookingID()
+
     }
 
     
@@ -287,15 +419,52 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
         self.navigationController?.navigationBar.isHidden = false
         
     }
-    /*
-    // MARK: - Navigation
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+} //Class
+
+extension CallDriverMapViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
-    */
-
+    
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == dayPicker {
+            return days.count
+            
+        } else if pickerView == numberPicker{
+            return number.count
+        }
+        return 1
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == dayPicker {
+            return days[row]
+            
+        } else if pickerView == numberPicker{
+            return number[row]
+        }
+        return ""
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        if pickerView == dayPicker {
+            selectedDay = days[row]
+            driverModalTextField.text = selectedDay
+            self.view.endEditing(false)
+        } else if pickerView == numberPicker{
+            selectNumber = number[row]
+            carModalTextField.text = selectNumber
+            self.view.endEditing(false)
+        }
+    }
+    
+    
 }
  
