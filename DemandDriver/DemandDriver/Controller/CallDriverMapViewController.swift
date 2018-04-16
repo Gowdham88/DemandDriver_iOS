@@ -20,6 +20,11 @@ import FirebaseFirestore
 
 class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate,UIGestureRecognizerDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
     
+    let geocoder = CLGeocoder()
+    var locality = ""
+    var administrativeArea = ""
+    var country = ""
+
     
     var pickerdata1: [String] = [String]()
     var pickerdata: [String] = [String]()
@@ -42,6 +47,7 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
         self.navigationController?.pushViewController(vc, animated: true)
         //self.present(vc, animated: true, completion: nil)
     }
+    
     @IBOutlet weak var hourdropdown: UIButton!
     @IBAction func hourdropdown(_ sender: Any) {
         pickerview = UIPickerView(frame:CGRect(x: 8, y: 8, width: self.view.frame.size.width, height: 200))
@@ -56,15 +62,12 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
         pickerview1 = UIPickerView(frame:CGRect(x: 8, y: 8, width: self.view.frame.size.width, height: 200))
         pickerview1.delegate = self
         pickerview1.dataSource = self
-        pickerdata1  =  [" STAR","STAR AUTOMATIC","ACCENT","ACCENT AUTOMATIC","ACCORD","ALTO","ALTO 800","ALTO K10","ALTO K10 AUTOMATIC","AMBASSADOR","AUDI","AUDI AUTOMATIC","BMW","BMW AUTOMATIC","BALENO","BENZ AUTOMATIC","BOLERO","CRV","CRV AUTOMATIC","CAMRY","CAMRY AUTOMATIC","CHEVROLET AVEO","CHEVROLET BEAT","CHEVROLET CAPTIVA","CHEVROLET CAPTIVA AUTOMATIC","CHEVROLET CRUZE","CHEVROLET CRUZE AUTOMATIC","CHEVROLET ENJOY","CHEVROLET OPTRA","CHEVROLET SAIL","CHEVROLET SAIL SEDAN","CHEVROLET SPARK","CHEVROLET TRAILBLAZER","CHEVROLET UVA","CIVIC","CIVIC AUTOMATIC","COROLA","COROLA AUTOMATIC","DAEWOOD CIELO","DUSTER","ELANTRA","ELANTRA AUTOMATIC","ENDEOVAR","ERTIGA","FERRARI","FIAT AVVENTURA","FIAT LINEA","FIAT PALIO","FIAT PUNTO","FIAT SIENNA","FIAT UNO","FORCE ONE SUV","FORD CLASSIC","FORD ECO SPORT","FORD ECO SPORT AUTOMATIC","FORD ESCORT","FORD FIESTA","FORD FIGO","FORD FIGO ASPIRE","FORD FUSION","FORD IKON","FORD MONDEO","FORTUNER","FORTUNER AUTOMATIC","GETZ","GRAND VITARA","HONDA AMAZE","HONDA AMAZE AUTOMATIC","HONDA BRIO","HONDA BRIO AUTOMATIC","HONDA CITY","HONDA CITY AUTOMATIC","HONDA JAZZ","HONDA JAZZ AUTOMATIC","HONDA MOBILIO","HUMMER","HYUNDAI CRETA","HYUNDAI EON","HYUNDAI EON SPORT","HYUNDAI SANTA FE","HYUNDAI SANTA FE AUTOMATIC","HYUNDAI TUCSON","HYUNDAI XCENT","HYUNDAI XCENT AUTOMATIC","HYUNDAI GRAND I10","I10","I10 AUTOMATIC","I10 AUTOMATIC","I10 GRAND","I20","I20 AUTOMATIC","INDICA","INDICA VISTA","INDIGO","INDIGO CS","INDIGO GLX","INDIGO MANZA","INDIGO MARINA","INNOVA","ISUZU MU7","JAGUAR","JAGUAR AUTOMATIC","JEEP","LAMBORGHINI","LANCER","LAND ROVER","LANDCRUSIER","LEXUS","LOGAN","LORRY","MAHINDRA E20","MAHINDRA QUANTO","MAHINDRA REXCENT","MAHINDRA VERITO","MARUTI 1000","MARUTI 800","MARUTI CELERIO","MARUTI CELERIO","MARUTI CELERIO AUTOMATIC","MARUTI CIAZ","MARUTI ECHO","MARUTI ESTEEM","MARUTI XCROSS","MATIZ","MERCEDES BENZ","MINI COOPER","NANO, NISSAN DATSUN GO","NISSAN MICRA","NISSAN MICRA AUTOMATIC","NISSAN SUNNY","NISSAN TERRANO","NISSAN TIANA AUTOMATIC","NISSAN XTRAIL","NISSAN XTRAIL AUTOMATIC","OMNI VAN","OPEL ASTRA","OPEL CORSA","OUT LAND","PAJERO","PALIO","PRADA","QUALIS","RANGE ROVER","REBOOKING","RENAULT DUSTER","RENAULT KOLEOS","RENAULT KWID","RENAULT LODGY","RENAULT PULSE","RENAULT SCALA","RITZ","RITZ AUTOMATIC","ROLLS ROYCE","SANTRO","SANTRO AUTOMATIC","SANTRO XING","SANTRO XING AUTOMATIC","SCORPIO","SKODA","SKODA CITIGO","SKODA LAURA","SKODA LAURA AUTOMATIC","SKODA OCTAVIA","SKODA OCTAVIA AUTOMATIC","SKODA RAPID","SKODA RAPID AUTOMATIC","SKODA SUPERB","SKODA SUPERB AUTOMATIC","SKODA YETI","SKODA YETI AUTOMATIC","SONATA","SONATA AUTOMATIC","SWIFT","SWIFT DZIRE","SWIFT DZIRE AUTOMATIC","SX 4","TATA ARIA","TATA BOLT","TATA DICOR","TATA MAGIC","TATA NANO","TATA SAFARI","TATA STORM","TATA SUMO","TATA VENTURE","TATA WINGER","TATA XENON","TATA ZETZ","TATA ZETZ AUTOMATIC","TAVERA","TEMPO TRAVELLAR","TERRACON","TOYOTA ALTIS","TOYOTA ALTIS AUTOMATIC","TOYOTA ETIOS","TOYOTA ETIOS LIVA","TOYOTA PRIUS","TOYOTA VOVLO","TOYOTA XLUSIVE","TOYOTA YARIS","VALET PARKING","VERNA","VERNA AUTOMATIC","VERNA FLUDIC","VERSA","VOLKSWAGEN BEETLE","VOLKSWAGEN JETTA","VOLKSWAGEN JETTA AUTOMATIC","VOLKSWAGEN PASSAT","VOLKSWAGEN PASSAT AUTOMATIC","VOLKSWAGEN POLO","VOLKSWAGEN POLO AUTOMATIC","VOLKSWAGEN VENTO","VOLKSWAGEN VENTO AUTOMATIC","WAGON R","WAGON R AUTOMATIC","XUV 500","XYLO","ZEN ESTILO","ZEN MARUTI"]
+        pickerdata1  =  ["1","2"]
         carModalTextField.inputView = pickerview1
         pickerview1.tag = 2
-        
     }
-    //    @IBOutlet weak var mapview: GMSMapView!
+
     
-   
-   
     var ref: DocumentReference? = nil
     let db = Firestore.firestore()
     var currentlat = Double()
@@ -94,65 +97,6 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
         driverModalTextField.isUserInteractionEnabled = false
         carModalTextField.isUserInteractionEnabled = false
        
-        
-        
-        
-//        let tgr = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureHandler))
-//        tgr.delegate = self
-//        mkmapView.addGestureRecognizer(tgr)
-//        let location = CLLocation(latitude: touchMapCoordinate.latitude, longitude: touchMapCoordinate.longitude)
-//
-//        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
-//
-//            // Place details
-//            var placeMark: CLPlacemark!
-//            placeMark = placemarks?[0]
-//
-//            // Address dictionary
-//            print(placeMark.addressDictionary)
-//
-//            // Location name
-//            if let locationName = placeMark.addressDictionary!["Name"] as? NSString {
-//                print(locationName)
-//            }
-//
-//            // Street address
-//            if let street = placeMark.addressDictionary!["Thoroughfare"] as? NSString {
-//                print(street)
-//            }
-//
-//            // City
-//            if let city = placeMark.addressDictionary!["City"] as? NSString {
-//                print(city)
-//            }
-//
-//            // Zip code
-//            if let zip = placeMark.addressDictionary!["ZIP"] as? NSString {
-//                print(zip)
-//            }
-//
-//            // Country
-//            if let country = placeMark.addressDictionary!["Country"] as? NSString {
-//                print(country)
-//            }
-//
-//        })
-        
-//        func tapGestureHandler(tgr: UITapGestureRecognizer)
-//    {
-//        let touchPoint = tgr.location(in: mkmapView)
-//        let touchMapCoordinate = mkmapView.convert(touchPoint, toCoordinateFrom: mkmapView)
-//        print("tapGestureHandler: touchMapCoordinate = \(touchMapCoordinate.latitude),\(touchMapCoordinate.longitude)")
-//    }
- 
-//   func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-//
-//        if status == .authorizedWhenInUse || status == .authorizedAlways {
-//
-//             LocationManager.startUpdatingLocation()
-//
-//        }
-//    }
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -168,7 +112,7 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
     }
         
     
-    func pickerview( _ : UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView( _ : UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerview.tag == 1 {
             return pickerdata[row]
         } else if pickerview1.tag == 2{
@@ -225,71 +169,32 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
     }
    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last! as CLLocation
-        let lat = location.coordinate.latitude
-        let long = location.coordinate.longitude
-        let center = CLLocationCoordinate2D(latitude: lat, longitude: long)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-//        let userLocation:CLLocation = locations[0] as CLLocation
+        let location = locations[0]
+        manager.stopUpdatingLocation()
         
-          manager.stopUpdatingLocation()
-//        let lat = userLocation.coordinate.latitude
-//        let long = userLocation.coordinate.longitude
-//        let coordinations = CLLocationCoordinate2D(latitude: lat,longitude: long)
-//        let span = MKCoordinateSpanMake(0.2,0.2)
-//        let region = MKCoordinateRegion(center: coordinations, span: span)
-        print("current lat:",lat)
-        print("current long:",long)
-        currentlat = lat
-        currentlong = long
-
-        mkmapView.setRegion(region, animated: true)
-       
-        newPin.coordinate = location.coordinate
-        mkmapView.addAnnotation(newPin)
+        geocoder.reverseGeocodeLocation(location, completionHandler: {(placemarks, error) in
+            if (error != nil) {
+                print("Error in reverseGeocode")
+            }
+            
+            let placemark = placemarks! as [CLPlacemark]
+            if placemark.count > 0 {
+                let placemark = placemarks![0]
+                self.locality = placemark.locality!
+                self.administrativeArea = placemark.administrativeArea!
+                self.country = placemark.country!
+                
+                print("locality, administrativeArea, country \(self.locality, self.administrativeArea, self.country)")
+            }
+        })
+    }
+    
+    func userLocationString() -> String {
+        let userLocationString = "\(locality), \(administrativeArea), \(country)"
+        return userLocationString
+    }
     
 
-        
-//        db.collection("Users").document(currentUser!).setData([
-//            "lat": lat,
-//            "long": long
-//            ]) { err in
-//                if let err = err {
-//                    print("Error updating document: \(err)")
-//                } else {
-//                    print("Document successfully updated")
-//                }
-//        }
-    }
-   
-
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        // Remove all annotations
-        self.mkmapView.removeAnnotations(mapView.annotations)
-        //        let center = mapView.centerCoordinate
-        //        // Add new annotation
-        //        let annotation = MKPointAnnotation()
-        //        let lat1 = mapView.centerCoordinate.latitude
-        //        let long1 = mapView.centerCoordinate.longitude
-        //        mapView.centerCoordinate = CLLocationCoordinate2D(latitude: lat1, longitude: long1)
-        //      //  let mapView.centerCoordinate = CLLocationCoordinate2D(latitude: lat1,longitude: long1 )
-        ////        let region = MKCoordinateRegion(center: mapView.centerCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        ////        mkmapView.setRegion(region, animated: true)
-        let annotation = MKPointAnnotation()
-        let lat1 = mapView.centerCoordinate.latitude
-        let long1 = mapView.centerCoordinate.longitude
-        annotation.coordinate = mapView.centerCoordinate
-        print("annotationCoordinate latitude::::::\(lat1)")
-        print("annotationCoordinate longitude::::::\(long1)")
-        lat2 = lat1
-        long2 = long1
-
-        annotation.title = "title"
-        annotation.subtitle = "subtitle"
-        self.mkmapView.addAnnotation(annotation)
-    }
-
-//
     @IBAction func bookNowButton(_ sender: Any) {
       
         
@@ -308,24 +213,8 @@ class CallDriverMapViewController: UIViewController,CLLocationManagerDelegate,MK
 
         }
     }
-    //    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        if annotation is MKUserLocation {
-//            return nil
-//        }
-//
-//        let reuseId = "pin"
-//        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-//        pinView?.animatesDrop = true
-//        if pinView == nil {
-//            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-//            pinView?.isDraggable = true
-//        }
-//        else {
-//            pinView?.annotation = annotation
-//        }
-//
-//        return pinView
-//    }
+
+    
 //    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
 //        if newState == MKAnnotationViewDragState.ending {
 //            let droppedAt = view.annotation?.coordinate
